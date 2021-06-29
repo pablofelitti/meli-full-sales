@@ -68,7 +68,7 @@ const retrieveCheapFullProducts = function () {
 }
 
 const createNotificationMessage = function (publication) {
-    return "Producto FULL con envío gratis más barato que un envío!\n\nDescripción: " + publication.title + "\n\nPrecio: " + publication.price + "\n\nLink: " + publication.permalink;
+    return "Producto FULL con envío gratis!\n\nDescripción: " + publication.title + "\n\nPrecio: " + publication.price + "\n\nLink: " + publication.permalink;
 }
 
 const getPublicationsWithFilters = function (category) {
