@@ -1,0 +1,22 @@
+{
+  "name": "meli-full-sales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "meli": "node src/meli_local.js",
+    "meli:mock": "NODE_ENV=local_test node src/meli_local_mock.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "https": "^1.0.0",
+    "pg": "^8.5.1",
+    "pg-format": "^1.0.4",
+    "telebot": "^1.4.1"
+  },
+  "devDependencies": {}
+}

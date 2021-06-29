@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:13.2
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: default_user
+      POSTGRES_DB: sale_checker_db

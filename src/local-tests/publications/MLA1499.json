@@ -1,0 +1,1657 @@
+{
+  "site_id": "MLA",
+  "paging": {
+    "total": 8,
+    "primary_results": 1000,
+    "offset": 0,
+    "limit": 5
+  },
+  "results": [
+    {
+      "id": "MLA725235643",
+      "site_id": "MLA",
+      "title": "Mercado Pago Point Bluetooth - Lector De Tarjetas Mpos",
+      "seller": {
+        "id": 228415881,
+        "permalink": "http://perfil.mercadolibre.com.ar/MERCADOPAGOPOINT",
+        "registration_date": "2016-09-14T16:29:35.000-04:00",
+        "car_dealer": false,
+        "real_estate_agency": false,
+        "tags": [
+          "brand",
+          "user_info_verified",
+          "large_seller",
+          "credits_profile",
+          "messages_as_seller"
+        ],
+        "seller_reputation": {
+          "transactions": {
+            "total": 118066,
+            "canceled": 3099,
+            "period": "historic",
+            "ratings": {
+              "negative": 0.02,
+              "positive": 0.96,
+              "neutral": 0.02
+            },
+            "completed": 114967
+          },
+          "power_seller_status": "platinum",
+          "metrics": {
+            "claims": {
+              "rate": 0,
+              "value": 0,
+              "period": "60 days"
+            },
+            "delayed_handling_time": {
+              "rate": 0.0014,
+              "value": 37,
+              "period": "60 days"
+            },
+            "sales": {
+              "period": "60 days",
+              "completed": 26287
+            },
+            "cancellations": {
+              "rate": 0,
+              "value": 1,
+              "period": "60 days"
+            }
+          },
+          "level_id": "5_green"
+        }
+      },
+      "price": 189,
+      "prices": {
+        "id": "MLA725235643",
+        "prices": [
+          {
+            "id": "9",
+            "type": "standard",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": null,
+              "end_time": null,
+              "eligible": true
+            },
+            "amount": 189,
+            "regular_amount": null,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {},
+            "last_updated": "2021-03-09T22:23:14Z"
+          },
+          {
+            "id": "3",
+            "type": "promotion",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": "2021-01-22T12:46:00Z",
+              "end_time": "2022-03-01T02:59:00Z",
+              "eligible": true
+            },
+            "amount": 189,
+            "regular_amount": 599,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {
+              "campaign_id": "MLA5454",
+              "promotion_id": "MLA5454",
+              "promotion_type": "campaign"
+            },
+            "last_updated": "2021-01-22T14:21:39Z"
+          }
+        ],
+        "presentation": {
+          "display_currency": "ARS"
+        },
+        "payment_method_prices": [],
+        "reference_prices": [
+          {
+            "id": "11",
+            "type": "was",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": "2021-03-13T05:14:11Z",
+              "end_time": "2021-03-16T05:14:11Z",
+              "eligible": true
+            },
+            "amount": 185.01,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "tags": [],
+            "last_updated": "2021-03-13T05:14:11Z"
+          }
+        ],
+        "purchase_discounts": []
+      },
+      "sale_price": null,
+      "currency_id": "ARS",
+      "available_quantity": 500,
+      "sold_quantity": 50000,
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "gold_pro",
+      "stop_time": "2039-03-01T13:34:28.000Z",
+      "condition": "new",
+      "permalink": "https://articulo.mercadolibre.com.ar/MLA-725235643-mercado-pago-point-bluetooth-lector-de-tarjetas-mpos-_JM",
+      "thumbnail": "http://http2.mlstatic.com/D_820573-MLA44516553476_012021-I.jpg",
+      "thumbnail_id": "820573-MLA44516553476_012021",
+      "accepts_mercadopago": true,
+      "installments": {
+        "quantity": 6,
+        "amount": 31.5,
+        "rate": 0,
+        "currency_id": "ARS"
+      },
+      "address": {
+        "state_id": "AR-C",
+        "state_name": "Capital Federal",
+        "city_id": null,
+        "city_name": "Retiro"
+      },
+      "shipping": {
+        "free_shipping": true,
+        "mode": "me2",
+        "tags": [
+          "fulfillment",
+          "self_service_in"
+        ],
+        "logistic_type": "fulfillment",
+        "store_pick_up": false
+      },
+      "seller_address": {
+        "id": "",
+        "comment": "",
+        "address_line": "",
+        "zip_code": "",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "state": {
+          "id": "AR-C",
+          "name": "Capital Federal"
+        },
+        "city": {
+          "id": null,
+          "name": "Retiro"
+        },
+        "latitude": "",
+        "longitude": ""
+      },
+      "attributes": [
+        {
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "id": "BRAND",
+          "name": "Marca",
+          "value_name": "Mercado Pago",
+          "source": 1572,
+          "value_id": null,
+          "value_struct": null,
+          "values": [
+            {
+              "id": null,
+              "name": "Mercado Pago",
+              "struct": null,
+              "source": 1572
+            }
+          ]
+        },
+        {
+          "value_name": "Nuevo",
+          "attribute_group_name": "Otros",
+          "source": 1572,
+          "id": "ITEM_CONDITION",
+          "name": "Condición del ítem",
+          "value_id": "2230284",
+          "value_struct": null,
+          "values": [
+            {
+              "struct": null,
+              "source": 1572,
+              "id": "2230284",
+              "name": "Nuevo"
+            }
+          ],
+          "attribute_group_id": "OTHERS"
+        },
+        {
+          "value_struct": null,
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "values": [
+            {
+              "id": null,
+              "name": "Bluetooth",
+              "struct": null,
+              "source": 1572
+            }
+          ],
+          "source": 1572,
+          "id": "MODEL",
+          "name": "Modelo",
+          "value_id": null,
+          "value_name": "Bluetooth"
+        },
+        {
+          "source": 4333789534002961,
+          "name": "Largo del paquete",
+          "values": [
+            {
+              "id": null,
+              "name": "15.8 cm",
+              "struct": {
+                "number": 15.8,
+                "unit": "cm"
+              },
+              "source": 4333789534002961
+            }
+          ],
+          "attribute_group_name": "Otros",
+          "value_struct": {
+            "number": 15.8,
+            "unit": "cm"
+          },
+          "attribute_group_id": "OTHERS",
+          "id": "PACKAGE_LENGTH",
+          "value_id": null,
+          "value_name": "15.8 cm"
+        },
+        {
+          "values": [
+            {
+              "struct": {
+                "number": 200,
+                "unit": "g"
+              },
+              "source": 4333789534002961,
+              "id": null,
+              "name": "200 g"
+            }
+          ],
+          "attribute_group_name": "Otros",
+          "id": "PACKAGE_WEIGHT",
+          "name": "Peso del paquete",
+          "value_id": null,
+          "source": 4333789534002961,
+          "value_name": "200 g",
+          "value_struct": {
+            "number": 200,
+            "unit": "g"
+          },
+          "attribute_group_id": "OTHERS"
+        }
+      ],
+      "differential_pricing": {
+        "id": 33678187
+      },
+      "original_price": 599,
+      "category_id": "MLA417028",
+      "official_store_id": 925,
+      "domain_id": "MLA-MAGNETIC_CARD_READERS",
+      "catalog_product_id": null,
+      "tags": [
+        "brand_verified",
+        "dragged_bids_and_visits",
+        "good_quality_picture",
+        "good_quality_thumbnail",
+        "immediate_payment",
+        "cart_eligible",
+        "shipping_guaranteed",
+        "best_seller_candidate"
+      ],
+      "order_backend": 1,
+      "use_thumbnail_id": true
+    },
+    {
+      "id": "MLA749158328",
+      "site_id": "MLA",
+      "title": "Mercado Pago Kit Point Mpos + Código Qr",
+      "seller": {
+        "id": 228415881,
+        "permalink": "http://perfil.mercadolibre.com.ar/MERCADOPAGOPOINT",
+        "registration_date": "2016-09-14T16:29:35.000-04:00",
+        "car_dealer": false,
+        "real_estate_agency": false,
+        "tags": [
+          "brand",
+          "user_info_verified",
+          "large_seller",
+          "credits_profile",
+          "messages_as_seller"
+        ],
+        "seller_reputation": {
+          "transactions": {
+            "total": 118066,
+            "canceled": 3099,
+            "period": "historic",
+            "ratings": {
+              "negative": 0.02,
+              "positive": 0.96,
+              "neutral": 0.02
+            },
+            "completed": 114967
+          },
+          "power_seller_status": "platinum",
+          "metrics": {
+            "claims": {
+              "rate": 0,
+              "value": 0,
+              "period": "60 days"
+            },
+            "delayed_handling_time": {
+              "rate": 0.0014,
+              "value": 37,
+              "period": "60 days"
+            },
+            "sales": {
+              "period": "60 days",
+              "completed": 26287
+            },
+            "cancellations": {
+              "rate": 0,
+              "value": 1,
+              "period": "60 days"
+            }
+          },
+          "level_id": "5_green"
+        }
+      },
+      "price": 99,
+      "prices": {
+        "id": "MLA749158328",
+        "prices": [
+          {
+            "id": "24",
+            "type": "standard",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": null,
+              "end_time": null,
+              "eligible": true
+            },
+            "amount": 99,
+            "regular_amount": null,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {},
+            "last_updated": "2021-04-06T15:53:56Z"
+          },
+          {
+            "id": "6",
+            "type": "promotion",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": "2021-01-22T12:46:00Z",
+              "end_time": "2022-03-01T02:59:00Z",
+              "eligible": true
+            },
+            "amount": 189,
+            "regular_amount": 599,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {
+              "campaign_id": "MLA5454",
+              "promotion_id": "MLA5454",
+              "promotion_type": "campaign"
+            },
+            "last_updated": "2021-02-04T00:08:23Z"
+          }
+        ],
+        "presentation": {
+          "display_currency": "ARS"
+        },
+        "payment_method_prices": [],
+        "reference_prices": [],
+        "purchase_discounts": []
+      },
+      "sale_price": null,
+      "currency_id": "ARS",
+      "available_quantity": 500,
+      "sold_quantity": 50000,
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "gold_pro",
+      "stop_time": "2039-03-01T13:34:53.000Z",
+      "condition": "new",
+      "permalink": "https://articulo.mercadolibre.com.ar/MLA-749158328-mercado-pago-kit-point-mpos-codigo-qr-_JM",
+      "thumbnail": "http://http2.mlstatic.com/D_899513-MLA44516537925_012021-I.jpg",
+      "thumbnail_id": "899513-MLA44516537925_012021",
+      "accepts_mercadopago": true,
+      "installments": {
+        "quantity": 6,
+        "amount": 16.5,
+        "rate": 0,
+        "currency_id": "ARS"
+      },
+      "address": {
+        "state_id": "AR-C",
+        "state_name": "Capital Federal",
+        "city_id": null,
+        "city_name": "Retiro"
+      },
+      "shipping": {
+        "free_shipping": true,
+        "mode": "me2",
+        "tags": [
+          "fulfillment",
+          "self_service_in"
+        ],
+        "logistic_type": "fulfillment",
+        "store_pick_up": false
+      },
+      "seller_address": {
+        "id": "",
+        "comment": "",
+        "address_line": "",
+        "zip_code": "",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "state": {
+          "id": "AR-C",
+          "name": "Capital Federal"
+        },
+        "city": {
+          "id": null,
+          "name": "Retiro"
+        },
+        "latitude": "",
+        "longitude": ""
+      },
+      "attributes": [
+        {
+          "value_id": null,
+          "values": [
+            {
+              "id": null,
+              "name": "Mercado Pago",
+              "struct": null,
+              "source": 1572
+            }
+          ],
+          "attribute_group_name": "Otros",
+          "id": "BRAND",
+          "value_name": "Mercado Pago",
+          "value_struct": null,
+          "attribute_group_id": "OTHERS",
+          "source": 1572,
+          "name": "Marca"
+        },
+        {
+          "name": "Condición del ítem",
+          "values": [
+            {
+              "name": "Nuevo",
+              "struct": null,
+              "source": 1572,
+              "id": "2230284"
+            }
+          ],
+          "source": 1572,
+          "value_struct": null,
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "id": "ITEM_CONDITION",
+          "value_id": "2230284",
+          "value_name": "Nuevo"
+        },
+        {
+          "value_id": null,
+          "value_name": "Point Bluetooth + Kit Cobro QR",
+          "value_struct": null,
+          "id": "MODEL",
+          "name": "Modelo",
+          "values": [
+            {
+              "id": null,
+              "name": "Point Bluetooth + Kit Cobro QR",
+              "struct": null,
+              "source": 1572
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "source": 1572
+        },
+        {
+          "value_id": null,
+          "value_name": "26.8 cm",
+          "values": [
+            {
+              "source": 4333789534002961,
+              "id": null,
+              "name": "26.8 cm",
+              "struct": {
+                "number": 26.8,
+                "unit": "cm"
+              }
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "id": "PACKAGE_LENGTH",
+          "value_struct": {
+            "number": 26.8,
+            "unit": "cm"
+          },
+          "attribute_group_name": "Otros",
+          "source": 4333789534002961,
+          "name": "Largo del paquete"
+        },
+        {
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "values": [
+            {
+              "id": null,
+              "name": "240 g",
+              "struct": {
+                "number": 240,
+                "unit": "g"
+              },
+              "source": 4333789534002961
+            }
+          ],
+          "source": 4333789534002961,
+          "id": "PACKAGE_WEIGHT",
+          "name": "Peso del paquete",
+          "value_id": null,
+          "value_name": "240 g",
+          "value_struct": {
+            "unit": "g",
+            "number": 240
+          }
+        }
+      ],
+      "differential_pricing": {
+        "id": 33678187
+      },
+      "original_price": null,
+      "category_id": "MLA417028",
+      "official_store_id": 925,
+      "domain_id": "MLA-MAGNETIC_CARD_READERS",
+      "catalog_product_id": null,
+      "tags": [
+        "brand_verified",
+        "good_quality_picture",
+        "good_quality_thumbnail",
+        "immediate_payment",
+        "cart_eligible",
+        "shipping_guaranteed"
+      ],
+      "order_backend": 2,
+      "use_thumbnail_id": true
+    },
+    {
+      "id": "MLA847892878",
+      "site_id": "MLA",
+      "title": "Kit Oficial Para Código Qr De Mercado Pago",
+      "seller": {
+        "id": 228415881,
+        "permalink": "http://perfil.mercadolibre.com.ar/MERCADOPAGOPOINT",
+        "registration_date": "2016-09-14T16:29:35.000-04:00",
+        "car_dealer": false,
+        "real_estate_agency": false,
+        "tags": [
+          "brand",
+          "user_info_verified",
+          "large_seller",
+          "credits_profile",
+          "messages_as_seller"
+        ],
+        "seller_reputation": {
+          "transactions": {
+            "total": 118066,
+            "canceled": 3099,
+            "period": "historic",
+            "ratings": {
+              "negative": 0.02,
+              "positive": 0.96,
+              "neutral": 0.02
+            },
+            "completed": 114967
+          },
+          "power_seller_status": "platinum",
+          "metrics": {
+            "claims": {
+              "rate": 0,
+              "value": 0,
+              "period": "60 days"
+            },
+            "delayed_handling_time": {
+              "rate": 0.0014,
+              "value": 37,
+              "period": "60 days"
+            },
+            "sales": {
+              "period": "60 days",
+              "completed": 26287
+            },
+            "cancellations": {
+              "rate": 0,
+              "value": 1,
+              "period": "60 days"
+            }
+          },
+          "level_id": "5_green"
+        }
+      },
+      "price": 159.2,
+      "prices": {
+        "id": "MLA847892878",
+        "prices": [
+          {
+            "id": "15",
+            "type": "standard",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": null,
+              "end_time": null,
+              "eligible": true
+            },
+            "amount": 199,
+            "regular_amount": null,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {},
+            "last_updated": "2021-03-29T16:17:52Z"
+          },
+          {
+            "id": "16",
+            "type": "promotion",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": "2021-04-05T03:00:00Z",
+              "end_time": "2021-04-10T02:59:59Z",
+              "eligible": true
+            },
+            "amount": 159.2,
+            "regular_amount": 199,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {
+              "promotion_id": "1430593-MLA847892878",
+              "promotion_type": "custom"
+            },
+            "last_updated": "2021-04-05T13:58:10Z"
+          }
+        ],
+        "presentation": {
+          "display_currency": "ARS"
+        },
+        "payment_method_prices": [],
+        "reference_prices": [],
+        "purchase_discounts": []
+      },
+      "sale_price": null,
+      "currency_id": "ARS",
+      "available_quantity": 500,
+      "sold_quantity": 5000,
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "gold_pro",
+      "stop_time": "2040-04-02T04:00:00.000Z",
+      "condition": "new",
+      "permalink": "https://articulo.mercadolibre.com.ar/MLA-847892878-kit-oficial-para-codigo-qr-de-mercado-pago-_JM",
+      "thumbnail": "http://http2.mlstatic.com/D_662162-MLA45332842817_032021-I.jpg",
+      "thumbnail_id": "662162-MLA45332842817_032021",
+      "accepts_mercadopago": true,
+      "installments": {
+        "quantity": 6,
+        "amount": 26.53,
+        "rate": 0,
+        "currency_id": "ARS"
+      },
+      "address": {
+        "state_id": "AR-C",
+        "state_name": "Capital Federal",
+        "city_id": null,
+        "city_name": "Retiro"
+      },
+      "shipping": {
+        "free_shipping": true,
+        "mode": "me2",
+        "tags": [
+          "fulfillment",
+          "self_service_out"
+        ],
+        "logistic_type": "fulfillment",
+        "store_pick_up": false
+      },
+      "seller_address": {
+        "id": "",
+        "comment": "",
+        "address_line": "",
+        "zip_code": "",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "state": {
+          "id": "AR-C",
+          "name": "Capital Federal"
+        },
+        "city": {
+          "id": null,
+          "name": "Retiro"
+        },
+        "latitude": "",
+        "longitude": ""
+      },
+      "attributes": [
+        {
+          "source": 6808261514773724,
+          "values": [
+            {
+              "id": "2230284",
+              "name": "Nuevo",
+              "struct": null,
+              "source": 6808261514773724
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "value_id": "2230284",
+          "value_name": "Nuevo",
+          "value_struct": null,
+          "attribute_group_name": "Otros",
+          "id": "ITEM_CONDITION",
+          "name": "Condición del ítem"
+        },
+        {
+          "name": "Largo",
+          "value_name": "30 cm",
+          "value_struct": {
+            "number": 30,
+            "unit": "cm"
+          },
+          "values": [
+            {
+              "name": "30 cm",
+              "struct": {
+                "number": 30,
+                "unit": "cm"
+              },
+              "source": 6808261514773724,
+              "id": null
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "source": 6808261514773724,
+          "id": "LENGTH",
+          "value_id": null
+        },
+        {
+          "source": 6808261514773724,
+          "id": "MODEL",
+          "name": "Modelo",
+          "value_id": "-1",
+          "value_struct": null,
+          "values": [
+            {
+              "source": 6808261514773724,
+              "id": "-1",
+              "name": null,
+              "struct": null
+            }
+          ],
+          "value_name": null,
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros"
+        },
+        {
+          "value_id": null,
+          "values": [
+            {
+              "id": null,
+              "name": "31 cm",
+              "struct": {
+                "number": 31,
+                "unit": "cm"
+              },
+              "source": 4333789534002961
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "name": "Largo del paquete",
+          "value_name": "31 cm",
+          "value_struct": {
+            "number": 31,
+            "unit": "cm"
+          },
+          "attribute_group_name": "Otros",
+          "source": 4333789534002961,
+          "id": "PACKAGE_LENGTH"
+        },
+        {
+          "source": 4333789534002961,
+          "name": "Peso del paquete",
+          "value_id": null,
+          "value_name": "1000 g",
+          "value_struct": {
+            "number": 1000,
+            "unit": "g"
+          },
+          "attribute_group_id": "OTHERS",
+          "id": "PACKAGE_WEIGHT",
+          "values": [
+            {
+              "id": null,
+              "name": "1000 g",
+              "struct": {
+                "number": 1000,
+                "unit": "g"
+              },
+              "source": 4333789534002961
+            }
+          ],
+          "attribute_group_name": "Otros"
+        }
+      ],
+      "differential_pricing": {
+        "id": 33678187
+      },
+      "original_price": 199,
+      "category_id": "MLA10096",
+      "official_store_id": 925,
+      "domain_id": "MLA-COMMERCIAL_NO_LIGHT_SIGNS",
+      "catalog_product_id": null,
+      "tags": [
+        "loyalty_discount_eligible",
+        "good_quality_picture",
+        "good_quality_thumbnail",
+        "immediate_payment",
+        "cart_eligible",
+        "shipping_guaranteed",
+        "best_seller_candidate"
+      ],
+      "order_backend": 3,
+      "use_thumbnail_id": true
+    },
+    {
+      "id": "MLA896085152",
+      "site_id": "MLA",
+      "title": "Kit Oficial De Almacenes Para Código Qr De Mercado Pago",
+      "seller": {
+        "id": 228415881,
+        "permalink": "http://perfil.mercadolibre.com.ar/MERCADOPAGOPOINT",
+        "registration_date": "2016-09-14T16:29:35.000-04:00",
+        "car_dealer": false,
+        "real_estate_agency": false,
+        "tags": [
+          "brand",
+          "user_info_verified",
+          "large_seller",
+          "credits_profile",
+          "messages_as_seller"
+        ],
+        "seller_reputation": {
+          "transactions": {
+            "total": 118066,
+            "canceled": 3099,
+            "period": "historic",
+            "ratings": {
+              "negative": 0.02,
+              "positive": 0.96,
+              "neutral": 0.02
+            },
+            "completed": 114967
+          },
+          "power_seller_status": "platinum",
+          "metrics": {
+            "claims": {
+              "rate": 0,
+              "value": 0,
+              "period": "60 days"
+            },
+            "delayed_handling_time": {
+              "rate": 0.0014,
+              "value": 37,
+              "period": "60 days"
+            },
+            "sales": {
+              "period": "60 days",
+              "completed": 26287
+            },
+            "cancellations": {
+              "rate": 0,
+              "value": 1,
+              "period": "60 days"
+            }
+          },
+          "level_id": "5_green"
+        }
+      },
+      "price": 189,
+      "prices": {
+        "id": "MLA896085152",
+        "prices": [
+          {
+            "id": "7",
+            "type": "standard",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": null,
+              "end_time": null,
+              "eligible": true
+            },
+            "amount": 189,
+            "regular_amount": null,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {},
+            "last_updated": "2021-03-25T20:01:14Z"
+          },
+          {
+            "id": "3",
+            "type": "promotion",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": "2021-02-18T03:00:00Z",
+              "end_time": "2021-02-22T02:59:59Z",
+              "eligible": true
+            },
+            "amount": 159.2,
+            "regular_amount": 199,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {
+              "promotion_id": "1181542-MLA896085152",
+              "promotion_type": "custom"
+            },
+            "last_updated": "2021-02-18T20:39:00Z"
+          }
+        ],
+        "presentation": {
+          "display_currency": "ARS"
+        },
+        "payment_method_prices": [],
+        "reference_prices": [
+          {
+            "id": "6",
+            "type": "was",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": "2021-03-14T04:55:47Z",
+              "end_time": "2021-03-17T04:55:47Z",
+              "eligible": true
+            },
+            "amount": 185.18,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "tags": [],
+            "last_updated": "2021-03-14T04:55:47Z"
+          }
+        ],
+        "purchase_discounts": []
+      },
+      "sale_price": null,
+      "currency_id": "ARS",
+      "available_quantity": 250,
+      "sold_quantity": 500,
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "gold_pro",
+      "stop_time": "2040-11-01T04:00:00.000Z",
+      "condition": "new",
+      "permalink": "https://articulo.mercadolibre.com.ar/MLA-896085152-kit-oficial-de-almacenes-para-codigo-qr-de-mercado-pago-_JM",
+      "thumbnail": "http://http2.mlstatic.com/D_815475-MLA44519209945_012021-I.jpg",
+      "thumbnail_id": "815475-MLA44519209945_012021",
+      "accepts_mercadopago": true,
+      "installments": {
+        "quantity": 6,
+        "amount": 31.5,
+        "rate": 0,
+        "currency_id": "ARS"
+      },
+      "address": {
+        "state_id": "AR-C",
+        "state_name": "Capital Federal",
+        "city_id": null,
+        "city_name": "Retiro"
+      },
+      "shipping": {
+        "free_shipping": true,
+        "mode": "me2",
+        "tags": [
+          "fulfillment",
+          "self_service_out"
+        ],
+        "logistic_type": "fulfillment",
+        "store_pick_up": false
+      },
+      "seller_address": {
+        "id": "",
+        "comment": "",
+        "address_line": "",
+        "zip_code": "",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "state": {
+          "id": "AR-C",
+          "name": "Capital Federal"
+        },
+        "city": {
+          "id": null,
+          "name": "Retiro"
+        },
+        "latitude": "",
+        "longitude": ""
+      },
+      "attributes": [
+        {
+          "id": "ITEM_CONDITION",
+          "value_id": "2230284",
+          "values": [
+            {
+              "id": "2230284",
+              "name": "Nuevo",
+              "struct": null,
+              "source": 6808261514773724
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 6808261514773724,
+          "name": "Condición del ítem",
+          "value_name": "Nuevo",
+          "value_struct": null,
+          "attribute_group_name": "Otros"
+        },
+        {
+          "id": "LENGTH",
+          "name": "Largo",
+          "values": [
+            {
+              "id": null,
+              "name": "30 cm",
+              "struct": {
+                "number": 30,
+                "unit": "cm"
+              },
+              "source": 6808261514773724
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 6808261514773724,
+          "value_id": null,
+          "value_name": "30 cm",
+          "value_struct": {
+            "number": 30,
+            "unit": "cm"
+          },
+          "attribute_group_name": "Otros"
+        },
+        {
+          "value_id": "-1",
+          "value_struct": null,
+          "values": [
+            {
+              "struct": null,
+              "source": 3376461333454861,
+              "id": "-1",
+              "name": null
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 3376461333454861,
+          "id": "MODEL",
+          "name": "Modelo",
+          "value_name": null,
+          "attribute_group_name": "Otros"
+        },
+        {
+          "value_id": null,
+          "value_name": "2 cm",
+          "value_struct": {
+            "number": 2,
+            "unit": "cm"
+          },
+          "values": [
+            {
+              "struct": {
+                "number": 2,
+                "unit": "cm"
+              },
+              "source": 4333789534002961,
+              "id": null,
+              "name": "2 cm"
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 4333789534002961,
+          "id": "PACKAGE_LENGTH",
+          "name": "Largo del paquete",
+          "attribute_group_name": "Otros"
+        },
+        {
+          "value_name": "40 g",
+          "values": [
+            {
+              "id": null,
+              "name": "40 g",
+              "struct": {
+                "number": 40,
+                "unit": "g"
+              },
+              "source": 4333789534002961
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 4333789534002961,
+          "id": "PACKAGE_WEIGHT",
+          "value_id": null,
+          "value_struct": {
+            "number": 40,
+            "unit": "g"
+          },
+          "attribute_group_name": "Otros",
+          "name": "Peso del paquete"
+        }
+      ],
+      "differential_pricing": {
+        "id": 33678187
+      },
+      "original_price": null,
+      "category_id": "MLA10096",
+      "official_store_id": 925,
+      "domain_id": "MLA-COMMERCIAL_NO_LIGHT_SIGNS",
+      "catalog_product_id": null,
+      "tags": [
+        "good_quality_thumbnail",
+        "loyalty_discount_eligible",
+        "good_quality_picture",
+        "immediate_payment",
+        "cart_eligible",
+        "shipping_guaranteed",
+        "best_seller_candidate"
+      ],
+      "order_backend": 4,
+      "use_thumbnail_id": true
+    },
+    {
+      "id": "MLA814757059",
+      "site_id": "MLA",
+      "title": "Kit Para Revendedores De Mercado Pago Point",
+      "seller": {
+        "id": 228415881,
+        "permalink": "http://perfil.mercadolibre.com.ar/MERCADOPAGOPOINT",
+        "registration_date": "2016-09-14T16:29:35.000-04:00",
+        "car_dealer": false,
+        "real_estate_agency": false,
+        "tags": [
+          "brand",
+          "user_info_verified",
+          "large_seller",
+          "credits_profile",
+          "messages_as_seller"
+        ],
+        "seller_reputation": {
+          "transactions": {
+            "total": 118066,
+            "canceled": 3099,
+            "period": "historic",
+            "ratings": {
+              "negative": 0.02,
+              "positive": 0.96,
+              "neutral": 0.02
+            },
+            "completed": 114967
+          },
+          "power_seller_status": "platinum",
+          "metrics": {
+            "claims": {
+              "rate": 0,
+              "value": 0,
+              "period": "60 days"
+            },
+            "delayed_handling_time": {
+              "rate": 0.0014,
+              "value": 37,
+              "period": "60 days"
+            },
+            "sales": {
+              "period": "60 days",
+              "completed": 26287
+            },
+            "cancellations": {
+              "rate": 0,
+              "value": 1,
+              "period": "60 days"
+            }
+          },
+          "level_id": "5_green"
+        }
+      },
+      "price": 699,
+      "prices": {
+        "id": "MLA814757059",
+        "prices": [
+          {
+            "id": "4340716f-dd35-4dcb-9625-6311e3d40ce0",
+            "type": "standard",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": null,
+              "end_time": null,
+              "eligible": true
+            },
+            "amount": 699,
+            "regular_amount": null,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {},
+            "last_updated": "2020-10-07T12:24:41Z"
+          }
+        ],
+        "presentation": {
+          "display_currency": "ARS"
+        },
+        "payment_method_prices": [],
+        "reference_prices": [],
+        "purchase_discounts": []
+      },
+      "sale_price": null,
+      "currency_id": "ARS",
+      "available_quantity": 250,
+      "sold_quantity": 500,
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "gold_pro",
+      "stop_time": "2040-07-22T17:59:08.000Z",
+      "condition": "new",
+      "permalink": "https://articulo.mercadolibre.com.ar/MLA-814757059-kit-para-revendedores-de-mercado-pago-point-_JM",
+      "thumbnail": "http://http2.mlstatic.com/D_895847-MLA32568136298_102019-I.jpg",
+      "thumbnail_id": "895847-MLA32568136298_102019",
+      "accepts_mercadopago": true,
+      "installments": {
+        "quantity": 6,
+        "amount": 116.5,
+        "rate": 0,
+        "currency_id": "ARS"
+      },
+      "address": {
+        "state_id": "AR-C",
+        "state_name": "Capital Federal",
+        "city_id": null,
+        "city_name": "Retiro"
+      },
+      "shipping": {
+        "free_shipping": true,
+        "mode": "me2",
+        "tags": [
+          "fulfillment",
+          "self_service_out"
+        ],
+        "logistic_type": "fulfillment",
+        "store_pick_up": false
+      },
+      "seller_address": {
+        "id": "",
+        "comment": "",
+        "address_line": "",
+        "zip_code": "",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "state": {
+          "id": "AR-C",
+          "name": "Capital Federal"
+        },
+        "city": {
+          "id": null,
+          "name": "Retiro"
+        },
+        "latitude": "",
+        "longitude": ""
+      },
+      "attributes": [
+        {
+          "id": "ITEM_CONDITION",
+          "name": "Condición del ítem",
+          "attribute_group_id": "OTHERS",
+          "value_id": "2230284",
+          "value_name": "Nuevo",
+          "value_struct": null,
+          "values": [
+            {
+              "struct": null,
+              "source": 6808261514773724,
+              "id": "2230284",
+              "name": "Nuevo"
+            }
+          ],
+          "attribute_group_name": "Otros",
+          "source": 6808261514773724
+        },
+        {
+          "value_struct": null,
+          "source": 6808261514773724,
+          "value_id": "-1",
+          "value_name": null,
+          "values": [
+            {
+              "id": "-1",
+              "name": null,
+              "struct": null,
+              "source": 6808261514773724
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "id": "LENGTH",
+          "name": "Largo"
+        },
+        {
+          "id": "MODEL",
+          "value_name": "Kit",
+          "attribute_group_name": "Otros",
+          "values": [
+            {
+              "name": "Kit",
+              "struct": null,
+              "source": 6808261514773724,
+              "id": null
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 6808261514773724,
+          "name": "Modelo",
+          "value_id": null,
+          "value_struct": null
+        }
+      ],
+      "differential_pricing": {
+        "id": 33678187
+      },
+      "original_price": null,
+      "category_id": "MLA10096",
+      "official_store_id": 925,
+      "domain_id": "MLA-COMMERCIAL_NO_LIGHT_SIGNS",
+      "catalog_product_id": null,
+      "tags": [
+        "good_quality_picture",
+        "good_quality_thumbnail",
+        "loyalty_discount_eligible",
+        "immediate_payment",
+        "cart_eligible",
+        "shipping_guaranteed",
+        "best_seller_candidate"
+      ],
+      "order_backend": 5,
+      "use_thumbnail_id": true
+    }
+  ],
+  "secondary_results": [],
+  "related_results": [],
+  "sort": {
+    "id": "relevance",
+    "name": "Más relevantes"
+  },
+  "available_sorts": [
+    {
+      "id": "price_asc",
+      "name": "Menor precio"
+    },
+    {
+      "id": "price_desc",
+      "name": "Mayor precio"
+    }
+  ],
+  "filters": [
+    {
+      "id": "shipping",
+      "name": "Tipo de entrega",
+      "type": "text",
+      "values": [
+        {
+          "id": "fulfillment",
+          "name": "Full"
+        }
+      ]
+    },
+    {
+      "id": "shipping_cost",
+      "name": "Costo de envío",
+      "type": "text",
+      "values": [
+        {
+          "id": "free",
+          "name": "Gratis"
+        }
+      ]
+    },
+    {
+      "id": "price",
+      "name": "Precio",
+      "type": "range",
+      "values": [
+        {
+          "id": "0-700",
+          "name": "Hasta $ 700"
+        }
+      ]
+    },
+    {
+      "id": "category",
+      "name": "Categorías",
+      "type": "text",
+      "values": [
+        {
+          "id": "MLA1499",
+          "name": "Industrias y Oficinas",
+          "path_from_root": [
+            {
+              "id": "MLA1499",
+              "name": "Industrias y Oficinas"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "available_filters": [
+    {
+      "id": "category",
+      "name": "Categorías",
+      "type": "text",
+      "values": [
+        {
+          "id": "MLA5343",
+          "name": "Equipamiento para Comercios",
+          "results": 2
+        },
+        {
+          "id": "MLA5174",
+          "name": "Publicidad y Promoción",
+          "results": 6
+        }
+      ]
+    },
+    {
+      "id": "official_store",
+      "name": "Tiendas oficiales",
+      "type": "text",
+      "values": [
+        {
+          "id": "all",
+          "name": "Todas las tiendas oficiales",
+          "results": 6
+        },
+        {
+          "id": "925",
+          "name": "Mercado Pago",
+          "results": 6
+        }
+      ]
+    },
+    {
+      "id": "discount",
+      "name": "Descuentos",
+      "type": "range",
+      "values": [
+        {
+          "id": "20-100",
+          "name": "Desde 20% OFF",
+          "results": 2
+        },
+        {
+          "id": "30-100",
+          "name": "Desde 30% OFF",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "name": "Ubicación",
+      "type": "text",
+      "values": [
+        {
+          "id": "TUxBUENBUGw3M2E1",
+          "name": "Capital Federal",
+          "results": 5
+        },
+        {
+          "id": "TUxBUEdSQWVmNTVm",
+          "name": "Bs.As. G.B.A. Oeste",
+          "results": 3
+        },
+        {
+          "id": "TUxBUE5FVW4xMzMzNQ",
+          "name": "Neuquén",
+          "results": 1
+        },
+        {
+          "id": "TUxBUENIQW8xMTNhOA",
+          "name": "Chaco",
+          "results": 1
+        },
+        {
+          "id": "TUxBUENPU2ExMmFkMw",
+          "name": "Bs.As. Costa Atlántica",
+          "results": 1
+        },
+        {
+          "id": "TUxBUENPUmFkZGIw",
+          "name": "Córdoba",
+          "results": 1
+        },
+        {
+          "id": "TUxBUFNBTmU5Nzk2",
+          "name": "Santa Fe",
+          "results": 1
+        },
+        {
+          "id": "TUxBUFRVQ244NmM3",
+          "name": "Tucumán",
+          "results": 1
+        },
+        {
+          "id": "TUxBUFpPTmFpbnRl",
+          "name": "Buenos Aires Interior",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "price",
+      "name": "Precio",
+      "type": "range",
+      "values": [
+        {
+          "id": "0.0-150.0",
+          "name": "Hasta $ 150",
+          "results": 1
+        },
+        {
+          "id": "150.0-450.0",
+          "name": "$150 a $450",
+          "results": 4
+        },
+        {
+          "id": "450.0-700.0",
+          "name": "$450 a $700",
+          "results": 3
+        }
+      ]
+    },
+    {
+      "id": "accepts_mercadopago",
+      "name": "Filtro por MercadoPago",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "yes",
+          "name": "Con MercadoPago",
+          "results": 8
+        }
+      ]
+    },
+    {
+      "id": "installments",
+      "name": "Pago",
+      "type": "text",
+      "values": [
+        {
+          "id": "yes",
+          "name": "En cuotas",
+          "results": 8
+        },
+        {
+          "id": "no_interest",
+          "name": "Sin interés",
+          "results": 6
+        }
+      ]
+    },
+    {
+      "id": "power_seller",
+      "name": "Filtro por calidad de vendedores",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "yes",
+          "name": "Mejores vendedores",
+          "results": 6
+        }
+      ]
+    },
+    {
+      "id": "has_video",
+      "name": "Filtro por publicaciones con video",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "yes",
+          "name": "Publicaciones con video",
+          "results": 5
+        }
+      ]
+    },
+    {
+      "id": "has_pictures",
+      "name": "Filtro por publicaciones con imágenes",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "yes",
+          "name": "Con fotos",
+          "results": 8
+        }
+      ]
+    },
+    {
+      "id": "ITEM_CONDITION",
+      "name": "Condición",
+      "type": "STRING",
+      "values": [
+        {
+          "id": "2230284",
+          "name": "Nuevo",
+          "results": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "site_id": "MLA",
+  "paging": {
+    "total": 1,
+    "primary_results": 1000,
+    "offset": 0,
+    "limit": 5
+  },
+  "results": [
+    {
+      "id": "MLA855807592",
+      "site_id": "MLA",
+      "title": "Aros Abridores Detalle Hexagonal 4mm Baño Oro 24k ",
+      "seller": {
+        "id": 210139221,
+        "permalink": "http://perfil.mercadolibre.com.ar/FRIKICRAFTSCBA",
+        "registration_date": "2016-04-12T13:56:21.000-04:00",
+        "car_dealer": false,
+        "real_estate_agency": false,
+        "tags": [
+          "normal",
+          "user_info_verified",
+          "credits_active_borrower",
+          "credits_profile",
+          "eshop",
+          "mshops",
+          "messages_as_seller",
+          "messages_as_buyer"
+        ],
+        "eshop": {
+          "nick_name": "RADA1520721",
+          "eshop_rubro": null,
+          "eshop_id": 281766,
+          "eshop_locations": [],
+          "site_id": "MLA",
+          "eshop_logo_url": "http://resources.mlstatic.com/eshops/210139221ve16917.png",
+          "eshop_status_id": 1,
+          "seller": 210139221,
+          "eshop_experience": 0
+        },
+        "seller_reputation": {
+          "transactions": {
+            "total": 1238,
+            "canceled": 108,
+            "period": "historic",
+            "ratings": {
+              "negative": 0.04,
+              "positive": 0.93,
+              "neutral": 0.03
+            },
+            "completed": 1130
+          },
+          "power_seller_status": null,
+          "metrics": {
+            "claims": {
+              "rate": 0.025,
+              "value": 5,
+              "period": "60 days"
+            },
+            "delayed_handling_time": {
+              "rate": 0.0053,
+              "value": 1,
+              "period": "60 days"
+            },
+            "sales": {
+              "period": "60 days",
+              "completed": 175
+            },
+            "cancellations": {
+              "rate": 0,
+              "value": 2,
+              "period": "60 days"
+            }
+          },
+          "level_id": "3_yellow"
+        }
+      },
+      "price": 560.3,
+      "prices": {
+        "id": "MLA855807592",
+        "prices": [
+          {
+            "id": "2",
+            "type": "standard",
+            "conditions": {
+              "context_restrictions": [],
+              "start_time": null,
+              "end_time": null,
+              "eligible": true
+            },
+            "amount": 560.3,
+            "regular_amount": null,
+            "currency_id": "ARS",
+            "exchange_rate_context": "DEFAULT",
+            "metadata": {},
+            "last_updated": "2021-03-13T16:26:59Z"
+          }
+        ],
+        "presentation": {
+          "display_currency": "ARS"
+        },
+        "payment_method_prices": []
+      },
+      "sale_price": null,
+      "currency_id": "ARS",
+      "available_quantity": 1,
+      "sold_quantity": 5,
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "gold_special",
+      "stop_time": "2040-08-29T03:11:42.000Z",
+      "condition": "new",
+      "permalink": "https://articulo.mercadolibre.com.ar/MLA-855807592-aros-abridores-detalle-hexagonal-4mm-bano-oro-24k-_JM",
+      "thumbnail": "http://http2.mlstatic.com/D_986300-MLA41833267922_052020-I.jpg",
+      "thumbnail_id": "986300-MLA41833267922_052020",
+      "accepts_mercadopago": true,
+      "installments": {
+        "quantity": 12,
+        "amount": 79.46,
+        "rate": 70.17,
+        "currency_id": "ARS"
+      },
+      "address": {
+        "state_id": "AR-X",
+        "state_name": "Córdoba",
+        "city_id": "TUxBQ0NBUGNiZGQx",
+        "city_name": "Córdoba"
+      },
+      "shipping": {
+        "free_shipping": true,
+        "mode": "me2",
+        "tags": [
+          "fulfillment"
+        ],
+        "logistic_type": "fulfillment",
+        "store_pick_up": false
+      },
+      "seller_address": {
+        "id": "",
+        "comment": "",
+        "address_line": "",
+        "zip_code": "",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "state": {
+          "id": "AR-X",
+          "name": "Córdoba"
+        },
+        "city": {
+          "id": "TUxBQ0NBUGNiZGQx",
+          "name": "Córdoba"
+        },
+        "latitude": "",
+        "longitude": ""
+      },
+      "attributes": [
+        {
+          "attribute_group_name": "Otros",
+          "value_name": "Friki Crafts",
+          "values": [
+            {
+              "id": null,
+              "name": "Friki Crafts",
+              "struct": null,
+              "source": 1505
+            }
+          ],
+          "value_id": null,
+          "value_struct": null,
+          "attribute_group_id": "OTHERS",
+          "source": 1505,
+          "id": "BRAND",
+          "name": "Marca"
+        },
+        {
+          "values": [
+            {
+              "id": "2230284",
+              "name": "Nuevo",
+              "struct": null,
+              "source": 1505
+            }
+          ],
+          "source": 1505,
+          "name": "Condición del ítem",
+          "value_id": "2230284",
+          "value_name": "Nuevo",
+          "value_struct": null,
+          "id": "ITEM_CONDITION",
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros"
+        },
+        {
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "source": 1505,
+          "id": "LENGTH",
+          "name": "Largo",
+          "value_id": null,
+          "value_name": "4 mm",
+          "value_struct": {
+            "number": 4,
+            "unit": "mm"
+          },
+          "values": [
+            {
+              "struct": {
+                "number": 4,
+                "unit": "mm"
+              },
+              "source": 1505,
+              "id": null,
+              "name": "4 mm"
+            }
+          ]
+        },
+        {
+          "name": "Modelo",
+          "value_id": null,
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros",
+          "source": 1505,
+          "id": "MODEL",
+          "value_name": "Abridores hexagonales esfera",
+          "value_struct": null,
+          "values": [
+            {
+              "id": null,
+              "name": "Abridores hexagonales esfera",
+              "struct": null,
+              "source": 1505
+            }
+          ]
+        },
+        {
+          "name": "Largo del paquete",
+          "value_struct": {
+            "number": 0.05,
+            "unit": "cm"
+          },
+          "attribute_group_name": "Otros",
+          "id": "PACKAGE_LENGTH",
+          "value_id": null,
+          "value_name": "0.05 cm",
+          "values": [
+            {
+              "id": null,
+              "name": "0.05 cm",
+              "struct": {
+                "number": 0.05,
+                "unit": "cm"
+              },
+              "source": 4333789534002961
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "source": 4333789534002961
+        },
+        {
+          "id": "PACKAGE_WEIGHT",
+          "attribute_group_name": "Otros",
+          "source": 4333789534002961,
+          "attribute_group_id": "OTHERS",
+          "name": "Peso del paquete",
+          "value_id": null,
+          "value_name": "20 g",
+          "value_struct": {
+            "number": 20,
+            "unit": "g"
+          },
+          "values": [
+            {
+              "source": 4333789534002961,
+              "id": null,
+              "name": "20 g",
+              "struct": {
+                "number": 20,
+                "unit": "g"
+              }
+            }
+          ]
+        },
+        {
+          "id": "UNITS_PER_PACK",
+          "name": "Unidades por pack",
+          "attribute_group_id": "OTHERS",
+          "value_id": null,
+          "value_name": "2",
+          "value_struct": null,
+          "values": [
+            {
+              "id": null,
+              "name": "2",
+              "struct": null,
+              "source": 1505
+            }
+          ],
+          "attribute_group_name": "Otros",
+          "source": 1505
+        }
+      ],
+      "original_price": null,
+      "category_id": "MLA1432",
+      "official_store_id": null,
+      "domain_id": "MLA-EARRINGS",
+      "catalog_product_id": null,
+      "tags": [
+        "poor_quality_thumbnail",
+        "poor_quality_picture",
+        "immediate_payment",
+        "cart_eligible",
+        "shipping_guaranteed"
+      ],
+      "order_backend": 1,
+      "use_thumbnail_id": true
+    }
+  ],
+  "secondary_results": [],
+  "related_results": [],
+  "sort": {
+    "id": "relevance",
+    "name": "Más relevantes"
+  },
+  "available_sorts": [
+    {
+      "id": "price_asc",
+      "name": "Menor precio"
+    },
+    {
+      "id": "price_desc",
+      "name": "Mayor precio"
+    }
+  ],
+  "filters": [
+    {
+      "id": "shipping",
+      "name": "Tipo de entrega",
+      "type": "text",
+      "values": [
+        {
+          "id": "fulfillment",
+          "name": "Full"
+        }
+      ]
+    },
+    {
+      "id": "shipping_cost",
+      "name": "Costo de envío",
+      "type": "text",
+      "values": [
+        {
+          "id": "free",
+          "name": "Gratis"
+        }
+      ]
+    },
+    {
+      "id": "price",
+      "name": "Precio",
+      "type": "range",
+      "values": [
+        {
+          "id": "0-700",
+          "name": "Hasta $ 700"
+        }
+      ]
+    },
+    {
+      "id": "category",
+      "name": "Categorías",
+      "type": "text",
+      "values": [
+        {
+          "id": "MLA3937",
+          "name": "Joyas y Relojes",
+          "path_from_root": [
+            {
+              "id": "MLA3937",
+              "name": "Joyas y Relojes"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "available_filters": [
+    {
+      "id": "state",
+      "name": "Ubicación",
+      "type": "text",
+      "values": [
+        {
+          "id": "TUxBUENPUmFkZGIw",
+          "name": "Córdoba",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "accepts_mercadopago",
+      "name": "Filtro por MercadoPago",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "yes",
+          "name": "Con MercadoPago",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "installments",
+      "name": "Pago",
+      "type": "text",
+      "values": [
+        {
+          "id": "yes",
+          "name": "En cuotas",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "has_pictures",
+      "name": "Filtro por publicaciones con imágenes",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "yes",
+          "name": "Con fotos",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "EARRING_TYPE",
+      "name": "Tipo de aro",
+      "type": "STRING",
+      "values": [
+        {
+          "id": "771123",
+          "name": "Perla",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "ITEM_CONDITION",
+      "name": "Condición",
+      "type": "STRING",
+      "values": [
+        {
+          "id": "2230284",
+          "name": "Nuevo",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "MATERIAL",
+      "name": "Material",
+      "type": "STRING",
+      "values": [
+        {
+          "id": "477129",
+          "name": "Oro",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "SALE_FORMAT",
+      "name": "Formato de venta",
+      "type": "STRING",
+      "values": [
+        {
+          "id": "1359392",
+          "name": "Pack",
+          "results": 1
+        }
+      ]
+    },
+    {
+      "id": "WITH_GEMSTONE",
+      "name": "Piedra",
+      "type": "boolean",
+      "values": [
+        {
+          "id": "242084",
+          "name": "Sin piedra",
+          "results": 1
+        }
+      ]
+    }
+  ]
+}
