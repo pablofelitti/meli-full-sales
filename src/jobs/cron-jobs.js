@@ -9,7 +9,7 @@ const configureMeliJob = function () {
 
     console.log('Meli job is enabled');
 
-    const meliJob = cron.job("* * * * *", async function () {
+    const meliJob = cron.job(process.env.MELI_CRON, async function () {
         console.info('Meli cron job started');
 
         if (meliTaskRunning) {
