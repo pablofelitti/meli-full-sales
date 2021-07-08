@@ -27,7 +27,7 @@ jobs:
             PGPASSWORD
             PGUSER
       env:
-        MELI_CRON: "* * * * *"
+        MELI_CRON: "*_*_*_*_*"
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_PROD }}
         TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL_PROD }}
         PGHOST: ${{ secrets.PGHOST_PROD }}
@@ -49,7 +49,7 @@ jobs:
             PGPASSWORD
             PGUSER
       env:
-        MELI_CRON: "30 * * * * *"
+        MELI_CRON: "30_*_*_*_*_*"
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_2_PROD }}
         TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL_PROD }}
         PGHOST: ${{ secrets.PGHOST_PROD }}
