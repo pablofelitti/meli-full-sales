@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
+    "test": "jest",
     "start": "node src/app.js",
     "meli": "node src/meli_local.js",
     "meli:mock": "NODE_ENV=local_test node src/meli_local_mock.js"
@@ -18,5 +19,7 @@
     "pg-format": "^1.0.4",
     "telebot": "^1.4.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }

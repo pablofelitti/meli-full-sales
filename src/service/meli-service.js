@@ -7,9 +7,13 @@ const getCategories = function () {
     return meliDao.getCategories();
 }
 
+function notify(it) {
+    notifier.notify(createNotificationMessage(it));
+}
+
 const retrieveCheapFullProducts = function () {
 
-    let categories = getCategories();
+    let categories = this.getCategories();
 
     categories.then(categories => {
         console.log(categories.length + ' categories retrieved');
@@ -54,7 +58,7 @@ const retrieveCheapFullProducts = function () {
                         console.log(publicationsReadyToNotify.map(it => it.id));
 
                         publicationsReadyToNotify.forEach(it => {
-                            notifier.notify(createNotificationMessage(it));
+                            this.notify(it);
                         });
 
                         meliDao.saveNotifiedPublication(publicationsReadyToNotify);
@@ -75,4 +79,6 @@ const getPublicationsWithFilters = function (category) {
     return meliDao.getPublicationsWithFilters(category);
 }
 
-exports.retrieveCheapFullProducts = retrieveCheapFullProducts;
+exports.retrieveCheapFullProducts = retrieveCheapFullProducts
+exports.getCategories = getCategories
+exports.notify = notify
