@@ -2,16 +2,20 @@
 
 //TODO any better way to mock??
 
+let notify
+
 if (process.env.NODE_ENV === 'local_test') {
 	const notifierMock = require('./notifier-mock');
 
-	exports.notify = function (text) {
+	notify = function (text) {
 		notifierMock.sendMessage(text);
 	};
 } else {
 	const telegramNotifier = require('./telegram-notifier');
 
-	exports.notify = function (text) {
+	notify = function (text) {
 		telegramNotifier.sendMessage(text);
 	};
 }
+
+exports.notify = notify

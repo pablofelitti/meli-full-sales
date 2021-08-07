@@ -17,11 +17,9 @@ client.connect();
 
 const saveNotifiedPublication = async function (publications) {
 
-    const values = publications.map(it => [it.id, it.title, it.price, new Date()]);
-
     try {
         await client.query('BEGIN')
-        const res = await client.query(format('insert into notified_publications (id, title, price, notified_date) values %L', values), [])
+        const res = await client.query(format('insert into notified_publications (id, title, price, notified_date) values %L', publications), [])
         await client.query('COMMIT')
     } catch (e) {
         await client.query('ROLLBACK')
