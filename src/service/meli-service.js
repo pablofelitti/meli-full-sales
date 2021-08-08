@@ -38,13 +38,21 @@ const retrieveCheapFullProducts = async function () {
                 return meliDao.loadAlreadyNotifiedPublications(publications.map(it => it.id))
                     .then(alreadyNotifiedPublications => {
 
-                        const alreadyNotifiedPublicationsIds = alreadyNotifiedPublications.map(it => it.id);
+                        let currentDatetime = dateUtils.currentDate();
+                        const alreadyNotifiedPublicationsIds = alreadyNotifiedPublications
+                            .filter(it => {
+                                let Difference_In_Time = Math.abs(new Date(it.notified_date).getTime() - currentDatetime.getTime())
+                                let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24)
+                                if (Difference_In_Days >= 10) return false
+                                return true
+                            })
+                            .map(it => it.id)
 
                         console.log('Publications already sent:');
                         console.log(alreadyNotifiedPublicationsIds);
 
                         const publicationsReadyToNotify = publications
-                            .filter(it => !alreadyNotifiedPublicationsIds.includes(it.id));
+                            .filter(it => !alreadyNotifiedPublicationsIds.includes(it.id))
 
                         if (publicationsReadyToNotify.length !== 0) {
 
@@ -55,7 +63,7 @@ const retrieveCheapFullProducts = async function () {
                                 notifier.notify(createNotificationMessage(it));
                             });
 
-                            return meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [it.id, it.title, it.price, dateUtils.currentDate()]))
+                            return meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [it.id, it.title, it.price, currentDatetime]))
                                 .then(() => {
                                     resolve()
                                 });
