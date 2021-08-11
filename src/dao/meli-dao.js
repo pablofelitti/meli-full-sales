@@ -1,3 +1,7 @@
+export function updateNotifiedPublications(publicationsToUpdate) {
+    return undefined;
+}
+
 'use strict'
 
 //TODO any better way to mock??
