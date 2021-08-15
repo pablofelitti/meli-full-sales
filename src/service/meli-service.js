@@ -4,7 +4,7 @@ const meliDao = require('../dao/meli-dao');
 const notifier = require('../notifications/notifier');
 const dateUtils = require('../utils/date-utils')
 
-function getUpdateNotifiedPublications(publicationsToUpdate, currentDatetime) {
+function updateNotifiedPublications(publicationsToUpdate, currentDatetime) {
     return meliDao.updateNotifiedPublications(publicationsToUpdate.map(it => {
         return {'id': it.id, 'notified_date': currentDatetime}
     }));
@@ -84,11 +84,11 @@ const retrieveCheapFullProducts = async function (values) {
                                 if (publicationsToUpdate.length === 0) {
                                     return newPublicationsNotified.then(() => resolve())
                                 } else {
-                                    let oldPublicationsUpdated = getUpdateNotifiedPublications(publicationsToUpdate, currentDatetime)
+                                    let oldPublicationsUpdated = updateNotifiedPublications(publicationsToUpdate, currentDatetime)
                                     return Promise.all([newPublicationsNotified, oldPublicationsUpdated]).then(() => resolve())
                                 }
                             } else {
-                                return getUpdateNotifiedPublications(publicationsToUpdate, currentDatetime).then(() => resolve())
+                                return updateNotifiedPublications(publicationsToUpdate, currentDatetime).then(() => resolve())
                             }
                         } else {
                             console.log('No new publications to notify');

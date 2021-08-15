@@ -1,7 +1,3 @@
-export function updateNotifiedPublications(publicationsToUpdate) {
-    return undefined;
-}
-
 'use strict'
 
 //TODO any better way to mock??
@@ -28,11 +24,15 @@ if (process.env.NODE_ENV == 'local_test') {
         return mock.loadBlacklist()
     };
 
+    const updateNotifiedPublications = function(publicationsToUpdate) {
+    }
+
     exports.getCategories = getCategories;
     exports.getPublicationsWithFilters = getPublicationsWithFilters;
     exports.saveNotifiedPublication = saveNotifiedPublication;
     exports.loadAlreadyNotifiedPublications = loadAlreadyNotifiedPublications;
     exports.loadBlacklist = loadBlacklist;
+    exports.updateNotifiedPublications = updateNotifiedPublications
 } else {
     const meliRestDao = require('./meli-dao-rest');
     const meliDaoDb = require('./meli-dao-db');
@@ -57,9 +57,14 @@ if (process.env.NODE_ENV == 'local_test') {
         return meliDaoDb.loadBlacklist()
     };
 
+    const updateNotifiedPublications = function(publicationsToUpdate) {
+        return meliDaoDb.updateNotifiedPublications(publicationsToUpdate)
+    }
+
     exports.getCategories = getCategories;
     exports.getPublicationsWithFilters = getPublicationsWithFilters;
     exports.saveNotifiedPublication = saveNotifiedPublication;
     exports.loadAlreadyNotifiedPublications = loadAlreadyNotifiedPublications;
     exports.loadBlacklist = loadBlacklist;
+    exports.updateNotifiedPublications = updateNotifiedPublications
 }

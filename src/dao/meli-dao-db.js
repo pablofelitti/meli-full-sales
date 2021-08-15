@@ -27,6 +27,19 @@ const saveNotifiedPublication = async function (publications) {
     }
 }
 
+const updateNotifiedPublications = async function updateNotifiedPublications(publicationsToUpdate) {
+    let ids = publicationsToUpdate.map(it => it.id)
+    let notifiedDate = publicationsToUpdate[0].notified_date
+    try {
+        await client.query('BEGIN')
+        const res = await client.query('update notified_publications set notified_date=$1 where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate])
+        await client.query('COMMIT')
+    } catch (e) {
+        await client.query('ROLLBACK')
+        throw e
+    }
+}
+
 const loadAlreadyNotifiedPublications = function (publicationIds) {
     return client
         .query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')')
@@ -42,3 +55,4 @@ const loadBlacklist = function () {
 exports.saveNotifiedPublication = saveNotifiedPublication
 exports.loadAlreadyNotifiedPublications = loadAlreadyNotifiedPublications
 exports.loadBlacklist = loadBlacklist
+exports.updateNotifiedPublications = updateNotifiedPublications
