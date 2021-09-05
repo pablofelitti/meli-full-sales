@@ -32,6 +32,6 @@ When pushed, a Github Action runs and pushes the code to Heroku using Docker
 
 ## TODO list
 
-- [ ] This program does not support multiple instances as we control with a system variable whether a job to analyze is running or not, it should be refactored to support multiple instances
-- [ ] Mock with proxyquire
-- [ ] Add unit tests
+- [ ] Mock in a better way
+- [ ] Enable endpoint to blacklist items
+- [ ] Enable UI to get all the information in the database and be able to modify it

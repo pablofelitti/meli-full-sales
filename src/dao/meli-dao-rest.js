@@ -52,15 +52,22 @@ const getPublicationsWithFilters = function (category) {
 
                 let data = Buffer.concat(chunks);
 
-                const jsonData = JSON.parse(data);
-                let publications = [];
-                jsonData.results
-                    .filter(it => it.price <= priceLimit)
-                    .forEach(it => publications.push(it));
+                let jsonData;
+                try {
+                    jsonData = JSON.parse(data);
 
-                console.log('For category ' + category + ' ' + publications.length + ' products were found');
+                    let publications = [];
+                    jsonData.results
+                        .filter(it => it.price <= priceLimit)
+                        .forEach(it => publications.push(it));
 
-                resolve(publications)
+                    console.log('For category ' + category + ' ' + publications.length + ' products were found');
+
+                    resolve(publications)
+                } catch (exception) {
+                    console.log(exception)
+                    resolve([])
+                }
             })
         })
 
