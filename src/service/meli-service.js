@@ -100,6 +100,8 @@ const retrieveCheapFullProducts = async function (values) {
                         reject()
                     });
             });
+        }).catch(e => {
+            console.log(e)
         });
     })
 }
