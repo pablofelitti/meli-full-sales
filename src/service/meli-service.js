@@ -10,7 +10,7 @@ function updateNotifiedPublications(publicationsToUpdate, currentDatetime) {
     }));
 }
 
-const retrieveCheapFullProducts = async function (values) {
+const retrieveCheapFullProducts = async function () {
 
     return new Promise(function (resolve, reject) {
         let categories = meliDao.getCategories()
@@ -101,6 +101,7 @@ const retrieveCheapFullProducts = async function (values) {
                     });
             });
         }).catch(e => {
+            console.log("Error loading MELI categories")
             console.log(e)
         });
     })
