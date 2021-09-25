@@ -33,5 +33,6 @@ When pushed, a Github Action runs and pushes the code to Heroku using Docker
 ## TODO list
 
 - [ ] Mock in a better way
+- [ ] Add tests to the rest calls behavior
 - [ ] Enable endpoint to blacklist items
 - [ ] Enable UI to get all the information in the database and be able to modify it

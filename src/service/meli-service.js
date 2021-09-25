@@ -96,14 +96,14 @@ const retrieveCheapFullProducts = async function () {
                         }
                     })
                     .catch(e => {
-                        console.error(e.stack)
+                        console.error(e)
                         reject()
                     });
             });
         }).catch(e => {
-            console.log("Error loading MELI categories")
-            console.log(e)
-        });
+            console.error("Error loading MELI categories")
+            console.error(e)
+        })
     })
 }
 

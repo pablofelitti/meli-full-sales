@@ -16,15 +16,19 @@ const getCategories = function () {
         const req = https.request(options, res => {
 
             res.on('data', d => {
-                const jsonData = JSON.parse(d);
-                let categories = [];
-                jsonData.forEach(it => categories.push(it.id));
-                resolve(categories)
+                try {
+                    const jsonData = JSON.parse(d);
+                    let categories = [];
+                    jsonData.forEach(it => categories.push(it.id));
+                    resolve(categories)
+                } catch (e) {
+                    reject(e)
+                }
             })
         })
 
-        req.on('error', error => {
-            reject(error)
+        req.on('error', e => {
+            reject(e)
         })
 
         req.end()
