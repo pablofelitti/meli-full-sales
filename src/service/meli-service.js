@@ -75,6 +75,15 @@ const retrieveCheapFullProducts = async function () {
 
                             publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(it.id))
 
+                            let itemsToRemove = publicationsReadyToNotify.length + publicationsToUpdate.length - 6
+                            if (itemsToRemove > 0) {
+                                publicationsReadyToNotify.slice(0, publicationsReadyToNotify.length - itemsToRemove)
+                            }
+                            itemsToRemove = publicationsReadyToNotify.length + publicationsToUpdate.length - 6
+                            if (itemsToRemove > 0) {
+                                publicationsToUpdate.slice(0, publicationsToUpdate.length - itemsToRemove)
+                            }
+
                             if (publicationsReadyToNotify.length > 0) {
                                 let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [it.id, it.title, it.price, currentDatetime]))
                                     .then(() => {
