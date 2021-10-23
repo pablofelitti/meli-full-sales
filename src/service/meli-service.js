@@ -64,6 +64,8 @@ const retrieveCheapFullProducts = async function () {
                         let publicationsReadyToNotify = publications
                             .filter(it => !alreadyNotifiedPublicationsIds.includes(it.id))
 
+                        publicationsReadyToNotify = unique(publicationsReadyToNotify)
+
                         if (publicationsReadyToNotify.length !== 0) {
 
                             console.log('Publications ready to be notified:');
@@ -105,6 +107,16 @@ const retrieveCheapFullProducts = async function () {
             console.error(e)
         })
     })
+}
+
+function unique(itemWithDuplicates) {
+    let result = [];
+    itemWithDuplicates.forEach(function (item) {
+        if (result.map(it => it.id).indexOf(item.id) < 0) {
+            result.push(item)
+        }
+    })
+    return result
 }
 
 const createNotificationMessage = function (publication) {
