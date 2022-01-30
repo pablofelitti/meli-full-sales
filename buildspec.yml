@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    AWS_ACCOUNT_ID: 869579352973
+
 phases:
   pre_build:
     commands:
