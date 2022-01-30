@@ -28,7 +28,7 @@ export PGUSER= <postgre_user>
 
 ## Deployment
 
-When pushed, a Github Action runs and pushes the code to Heroku using Docker
+When pushed, AWS CodeBuild runs and pushes the build Docker image to AWS ECR 
 
 ## TODO list
 
