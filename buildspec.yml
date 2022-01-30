@@ -2,7 +2,10 @@ version: 0.2
 
 env:
   variables:
+    AWS_DEFAULT_REGION: us-east-1
     AWS_ACCOUNT_ID: 869579352973
+    IMAGE_REPO_NAME: meli-full-sales
+    IMAGE_TAG: latest
 
 phases:
   pre_build:
