@@ -65,8 +65,6 @@ const getPublicationsWithFilters = function (category) {
                         .filter(it => it.price <= priceLimit)
                         .forEach(it => publications.push(it));
 
-                    console.log('For category ' + category + ' ' + publications.length + ' products were found');
-
                     resolve(publications)
                 } catch (exception) {
                     console.log(exception)
