@@ -28,11 +28,13 @@ export PGUSER= <postgre_user>
 
 ## Deployment
 
-When pushed, AWS CodeBuild runs and pushes the build Docker image to AWS ECR 
+When pushed, AWS CodePipeline builds Dockerfile and deploys to AWS Beanstalk 
 
 ## TODO list
 
 - [ ] Mock in a better way
-- [ ] Add tests to the rest calls behavior
+- [ ] Remove secrets from Beanstalk env variables
+- [ ] Move from Heroku DB to either RDS or DynamoDB
+- [ ] Refactor this app to send notifications in async way (SQS + Lambda)
 - [ ] Enable endpoint to blacklist items
 - [ ] Enable UI to get all the information in the database and be able to modify it
