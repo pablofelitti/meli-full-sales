@@ -83,7 +83,7 @@ describe("Already existing notified publications exist", function () {
 
                 expect(mockNotify).toHaveBeenCalled()
                 expect(mockUpdateNotifiedPublication).toHaveBeenCalledWith(expect.arrayContaining([
-                    {id: "MLA749158328", notified_date: new Date(Date.parse("07/30/2021"))}
+                    {id: 749158328, notified_date: new Date(Date.parse("07/30/2021"))}
                 ]))
                 expect(mockSaveNotifiedPublication).not.toHaveBeenCalled()
             })

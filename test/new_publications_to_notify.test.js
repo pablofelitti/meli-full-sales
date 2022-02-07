@@ -78,7 +78,7 @@ describe("No existing notified publications exist", function () {
             expect(mockNotify).toHaveBeenCalled()
             expect(mockSaveNotifiedPublication).toHaveBeenCalledWith([
                 [
-                    "MLA749158328",
+                    749158328,
                     "Mercado Pago Kit Point Mpos + Código Qr",
                     99, new Date(Date.parse("07/30/2021"))
                 ]

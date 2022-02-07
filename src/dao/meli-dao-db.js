@@ -32,7 +32,9 @@ const updateNotifiedPublications = async function updateNotifiedPublications(pub
     let notifiedDate = publicationsToUpdate[0].notified_date
     try {
         await client.query('BEGIN')
-        const res = await client.query('update notified_publications set notified_date=$1 where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate])
+        await client.query('update notified_publications set notified_date=? where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate], function (error) {
+            if (error) throw error;
+        })
         await client.query('COMMIT')
     } catch (e) {
         await client.query('ROLLBACK')

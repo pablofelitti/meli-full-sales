@@ -6,7 +6,7 @@ const dateUtils = require('../utils/date-utils')
 
 function updateNotifiedPublications(publicationsToUpdate, currentDatetime) {
     return meliDao.updateNotifiedPublications(publicationsToUpdate.map(it => {
-        return {'id': unifyId(it.id), 'notified_date': currentDatetime}
+        return {'id': it.id, 'notified_date': currentDatetime}
     }));
 }
 
@@ -80,7 +80,7 @@ const retrieveCheapFullProducts = async function () {
                                 notifier.notify(createNotificationMessage(it));
                             });
 
-                            publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => unifyId(it2.id)).includes(it.id))
+                            publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(unifyId(it.id)))
 
                             if (publicationsReadyToNotify.length > 0) {
                                 let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]))
