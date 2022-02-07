@@ -1,8 +1,6 @@
 'use strict'
 
-const {Client} = require('pg');
-const format = require('pg-format');
-
+const mysql = require('mysql');
 const clientOptions = {
     host: process.env.PGHOST,
     user: process.env.PGUSER,
@@ -12,14 +10,16 @@ const clientOptions = {
         rejectUnauthorized: false
     }
 }
-const client = new Client(clientOptions);
-client.connect();
+const client = mysql.createConnection(clientOptions);
 
 const saveNotifiedPublication = async function (publications) {
 
     try {
         await client.query('BEGIN')
-        const res = await client.query(format('insert into notified_publications (id, title, price, notified_date) values %L', publications), [])
+        await client.query('insert into notified_publications (id, title, price, notified_date) values (?)', publications, function(error) {
+            if (error) throw error;
+            client.end();
+        })
         await client.query('COMMIT')
     } catch (e) {
         await client.query('ROLLBACK')
@@ -41,15 +41,21 @@ const updateNotifiedPublications = async function updateNotifiedPublications(pub
 }
 
 const loadAlreadyNotifiedPublications = function (publicationIds) {
-    return client
-        .query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')')
-        .then(queryResult => queryResult.rows)
+    return new Promise(resolve => {
+        client.query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')', function (error, results, fields) {
+            if (error) throw error;
+            return resolve(results);
+        })
+    })
 }
 
 const loadBlacklist = function () {
-    return client
-        .query('SELECT id, title from blacklist bl')
-        .then(queryResult => queryResult.rows)
+    return new Promise(resolve => {
+        client.query('SELECT id, title from blacklist bl', function (error, results, fields) {
+            if (error) throw error;
+            return resolve(results);
+        })
+    })
 }
 
 exports.saveNotifiedPublication = saveNotifiedPublication

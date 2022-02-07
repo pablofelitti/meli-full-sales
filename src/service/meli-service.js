@@ -6,8 +6,13 @@ const dateUtils = require('../utils/date-utils')
 
 function updateNotifiedPublications(publicationsToUpdate, currentDatetime) {
     return meliDao.updateNotifiedPublications(publicationsToUpdate.map(it => {
-        return {'id': it.id, 'notified_date': currentDatetime}
+        return {'id': unifyId(it.id), 'notified_date': currentDatetime}
     }));
+}
+
+function unifyId(id) {
+    let noPrefixId = id.replace('MLA', '');
+    return parseInt(noPrefixId);
 }
 
 const retrieveCheapFullProducts = async function () {
@@ -28,20 +33,20 @@ const retrieveCheapFullProducts = async function () {
                 let publications = it.reduce((prev, curr) => curr.concat(prev));
 
                 console.log('Received these publications from Mercado Libre:')
-                console.log(publications.map(it => it.id))
+                console.log(publications.map(it => unifyId(it.id)))
 
                 return blacklistPromise.then(blacklist => {
 
                     console.log('Blacklisted items found:')
-                    console.log(publications.map(it => it.id).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId)))
+                    console.log(publications.map(it => unifyId(it.id)).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId)))
 
-                    return publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(publication.id))
+                    return publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(unifyId(publication.id)))
                 })
             })
 
             return publicationsPromise.then(publications => {
 
-                return meliDao.loadAlreadyNotifiedPublications(publications.map(it => it.id))
+                return meliDao.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)))
                     .then(alreadyNotifiedPublications => {
 
                         let publicationsToUpdate = []
@@ -62,23 +67,23 @@ const retrieveCheapFullProducts = async function () {
                         console.log(alreadyNotifiedPublicationsIds);
 
                         let publicationsReadyToNotify = publications
-                            .filter(it => !alreadyNotifiedPublicationsIds.includes(it.id))
+                            .filter(it => !alreadyNotifiedPublicationsIds.includes(unifyId(it.id)))
 
                         publicationsReadyToNotify = unique(publicationsReadyToNotify)
 
                         if (publicationsReadyToNotify.length !== 0) {
 
                             console.log('Publications ready to be notified:');
-                            console.log(publicationsReadyToNotify.map(it => it.id));
+                            console.log(publicationsReadyToNotify.map(it => unifyId(it.id)));
 
                             publicationsReadyToNotify.forEach(it => {
                                 notifier.notify(createNotificationMessage(it));
                             });
 
-                            publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(it.id))
+                            publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => unifyId(it2.id)).includes(it.id))
 
                             if (publicationsReadyToNotify.length > 0) {
-                                let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [it.id, it.title, it.price, currentDatetime]))
+                                let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]))
                                     .then(() => {
                                         resolve()
                                     });
@@ -112,7 +117,7 @@ const retrieveCheapFullProducts = async function () {
 function unique(itemWithDuplicates) {
     let result = [];
     itemWithDuplicates.forEach(function (item) {
-        if (result.map(it => it.id).indexOf(item.id) < 0) {
+        if (result.map(it => unifyId(it.id)).indexOf(unifyId(item.id)) < 0) {
             result.push(item)
         }
     })
