@@ -16,7 +16,7 @@ const saveNotifiedPublication = async function (publications) {
 
     try {
         await client.query('BEGIN')
-        await client.query('insert into notified_publications (id, title, price, notified_date) values (?)', publications, function(error) {
+        await client.query('insert into notified_publications (id, title, price, notified_date) values ?', [publications], function(error) {
             if (error) throw error;
             client.end();
         })

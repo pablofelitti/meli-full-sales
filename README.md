@@ -34,7 +34,6 @@ When pushed, AWS CodePipeline builds Dockerfile and deploys to AWS Beanstalk
 
 - [ ] Mock in a better way
 - [ ] Remove secrets from Beanstalk env variables
-- [ ] Move from Heroku DB to either RDS or DynamoDB
 - [ ] Refactor this app to send notifications in async way (SQS + Lambda)
 - [ ] Enable endpoint to blacklist items
 - [ ] Enable UI to get all the information in the database and be able to modify it
