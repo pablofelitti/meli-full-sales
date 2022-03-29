@@ -33,7 +33,7 @@ describe("Already existing notified publications exist", function () {
                     loadAlreadyNotifiedPublications: function () {
                         return new Promise(function (resolve, reject) {
                             resolve([{
-                                "id": "MLA749158328",
+                                "id": 749158328,
                                 "title": "Mercado Pago Kit Point Mpos + Código Qr",
                                 "price": "446",
                                 "notified_date": "2021-07-13T03:00:00.000Z"
