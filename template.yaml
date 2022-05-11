@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: meli full sales lambda
+
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  MeliFullSalesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Architectures:
+        - x86_64
+    Metadata:
+      DockerTag: nodejs14.x-v1
+      DockerContext: ./
+      Dockerfile: Dockerfile

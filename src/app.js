@@ -1,14 +1,7 @@
-'use strict'
+const meli = require("./jobs/meli")
+const AWS = require('aws-sdk')
+const ssm = new AWS.SSM();
 
-const app = require('express')();
-const cronJobs = require('./jobs/cron-jobs');
-
-app.get('/health', function(req, res) {
-    console.log('Keepalive service invoked');
-    res.send();
-});
-
-app.listen(process.env.PORT || 3000, function() {
-    console.log('Start up successful');
-    cronJobs.init();
-});
+exports.lambdaHandler = async (event, context) => {
+    await meli.retrieveCheapFullProducts()
+}

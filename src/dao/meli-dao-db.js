@@ -1,22 +1,42 @@
 'use strict'
 
 const mysql = require('mysql');
-const clientOptions = {
-    host: process.env.PGHOST,
-    user: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
-    database: process.env.PGDATABASE,
-    ssl: {
-        rejectUnauthorized: false
+
+const getParameters = async function () {
+    const query = {Path: "/applications-db"}
+    let ssmResponse = await ssm.getParametersByPath(query).promise();
+    return {
+        HOST: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/host')[0].Value,
+        USER: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/user')[0].Value,
+        PASSWORD: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/password')[0].Value,
+        DATABASE: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/database-meli')[0].Value
     }
 }
-const client = mysql.createConnection(clientOptions);
+
+async function getConnection() {
+
+    const parameters = await getParameters()
+
+    const clientOptions = {
+        host: parameters.HOST,
+        user: parameters.USER,
+        password: parameters.PASSWORD,
+        database: parameters.DATABASE,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+
+    return mysql.createConnection(clientOptions)
+}
+
+const client = async () => await getConnection();
 
 const saveNotifiedPublication = async function (publications) {
 
     try {
         await client.query('BEGIN')
-        await client.query('insert into notified_publications (id, title, price, notified_date) values ?', [publications], function(error) {
+        await client.query('insert into notified_publications (id, title, price, notified_date) values ?', [publications], function (error) {
             if (error) throw error;
             client.end();
         })
