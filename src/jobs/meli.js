@@ -2,8 +2,8 @@
 
 const meliService = require('../service/meli-service');
 
-const retrieveCheapFullProducts = function() {
-    meliService.retrieveCheapFullProducts()
+const retrieveCheapFullProducts = async function() {
+    await meliService.retrieveCheapFullProducts()
 }
 
 exports.retrieveCheapFullProducts = retrieveCheapFullProducts
