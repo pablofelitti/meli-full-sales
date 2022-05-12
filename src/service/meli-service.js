@@ -4,10 +4,10 @@ const meliDao = require('../dao/meli-dao');
 const notifier = require('../notifications/notifier');
 const dateUtils = require('../utils/date-utils')
 
-function updateNotifiedPublications(publicationsToUpdate, currentDatetime) {
+function updateNotifiedPublications(publicationsToUpdate, currentDatetime, client) {
     return meliDao.updateNotifiedPublications(publicationsToUpdate.map(it => {
         return {'id': it.id, 'notified_date': currentDatetime}
-    }));
+    }), client);
 }
 
 function unifyId(id) {
@@ -17,6 +17,8 @@ function unifyId(id) {
 
 const retrieveCheapFullProducts = async function () {
 
+    const client = await meliDao.getConnection()
+
     return new Promise(function (resolve, reject) {
         let categories = meliDao.getCategories()
 
@@ -24,10 +26,10 @@ const retrieveCheapFullProducts = async function () {
             console.log(categories.length + ' categories retrieved');
 
             let allCategoriesPublicationPromises = categories.map(category => {
-                return meliDao.getPublicationsWithFilters(category);
+                return meliDao.getPublicationsWithFilters(category, client);
             });
 
-            let blacklistPromise = meliDao.loadBlacklist()
+            let blacklistPromise = meliDao.loadBlacklist(client)
 
             let publicationsPromise = Promise.all(allCategoriesPublicationPromises).then(it => {
                 let publications = it.reduce((prev, curr) => curr.concat(prev));
@@ -46,7 +48,7 @@ const retrieveCheapFullProducts = async function () {
 
             return publicationsPromise.then(publications => {
 
-                return meliDao.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)))
+                return meliDao.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)), client)
                     .then(alreadyNotifiedPublications => {
 
                         let publicationsToUpdate = []
@@ -83,7 +85,7 @@ const retrieveCheapFullProducts = async function () {
                             publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(unifyId(it.id)))
 
                             if (publicationsReadyToNotify.length > 0) {
-                                let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]))
+                                let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]), client)
                                     .then(() => {
                                         resolve()
                                     });
@@ -91,7 +93,7 @@ const retrieveCheapFullProducts = async function () {
                                 if (publicationsToUpdate.length === 0) {
                                     return newPublicationsNotified.then(() => resolve())
                                 } else {
-                                    let oldPublicationsUpdated = updateNotifiedPublications(publicationsToUpdate, currentDatetime)
+                                    let oldPublicationsUpdated = updateNotifiedPublications(publicationsToUpdate, currentDatetime, client)
                                     return Promise.all([newPublicationsNotified, oldPublicationsUpdated]).then(() => resolve())
                                 }
                             } else {

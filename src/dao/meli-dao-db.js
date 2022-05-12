@@ -1,6 +1,8 @@
 'use strict'
 
-const mysql = require('mysql');
+const AWS = require('aws-sdk')
+const ssm = new AWS.SSM()
+const mysql = require('mysql')
 
 const getParameters = async function () {
     const query = {Path: "/applications-db"}
@@ -13,7 +15,7 @@ const getParameters = async function () {
     }
 }
 
-async function getConnection() {
+const getConnection = async function getConnection() {
 
     const parameters = await getParameters()
 
@@ -30,9 +32,7 @@ async function getConnection() {
     return mysql.createConnection(clientOptions)
 }
 
-const client = async () => await getConnection();
-
-const saveNotifiedPublication = async function (publications) {
+const saveNotifiedPublication = async function (publications, client) {
 
     try {
         await client.query('BEGIN')
@@ -47,7 +47,7 @@ const saveNotifiedPublication = async function (publications) {
     }
 }
 
-const updateNotifiedPublications = async function updateNotifiedPublications(publicationsToUpdate) {
+const updateNotifiedPublications = async function updateNotifiedPublications(publicationsToUpdate, client) {
     let ids = publicationsToUpdate.map(it => it.id)
     let notifiedDate = publicationsToUpdate[0].notified_date
     try {
@@ -62,7 +62,7 @@ const updateNotifiedPublications = async function updateNotifiedPublications(pub
     }
 }
 
-const loadAlreadyNotifiedPublications = function (publicationIds) {
+const loadAlreadyNotifiedPublications = function (publicationIds, client) {
     return new Promise(resolve => {
         client.query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')', function (error, results, fields) {
             if (error) throw error;
@@ -71,7 +71,7 @@ const loadAlreadyNotifiedPublications = function (publicationIds) {
     })
 }
 
-const loadBlacklist = function () {
+const loadBlacklist = function (client) {
     return new Promise(resolve => {
         client.query('SELECT id, title from blacklist bl', function (error, results, fields) {
             if (error) throw error;
@@ -84,3 +84,4 @@ exports.saveNotifiedPublication = saveNotifiedPublication
 exports.loadAlreadyNotifiedPublications = loadAlreadyNotifiedPublications
 exports.loadBlacklist = loadBlacklist
 exports.updateNotifiedPublications = updateNotifiedPublications
+exports.getConnection = getConnection

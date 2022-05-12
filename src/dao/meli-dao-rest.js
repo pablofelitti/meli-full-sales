@@ -35,7 +35,7 @@ const getCategories = function () {
     })
 }
 
-const getPublicationsWithFilters = function (category) {
+const getPublicationsWithFilters = function (category, client) {
 
 //TODO query params should be treated as parameters somewhere else
     const options = {
