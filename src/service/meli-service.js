@@ -35,12 +35,12 @@ const retrieveCheapFullProducts = async function () {
                 let publications = it.reduce((prev, curr) => curr.concat(prev));
 
                 console.log('Received these publications from Mercado Libre:')
-                console.log(publications.map(it => unifyId(it.id)))
+                console.log(JSON.stringify(publications.map(it => unifyId(it.id))))
 
                 return blacklistPromise.then(blacklist => {
 
                     console.log('Blacklisted items found:')
-                    console.log(publications.map(it => unifyId(it.id)).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId)))
+                    console.log(JSON.stringify(publications.map(it => unifyId(it.id)).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId))))
 
                     return publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(unifyId(publication.id)))
                 })
@@ -66,7 +66,7 @@ const retrieveCheapFullProducts = async function () {
                             .map(it => it.id)
 
                         console.log('Publications already sent:');
-                        console.log(alreadyNotifiedPublicationsIds);
+                        console.log(JSON.stringify(alreadyNotifiedPublicationsIds));
 
                         let publicationsReadyToNotify = publications
                             .filter(it => !alreadyNotifiedPublicationsIds.includes(unifyId(it.id)))
