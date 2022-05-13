@@ -13,6 +13,13 @@ Resources:
       PackageType: Image
       Architectures:
         - x86_64
+      Policies:
+        - SSMParameterReadPolicy:
+            ParameterName: 'telegram-ids/*'
+        - SSMParameterReadPolicy:
+            ParameterName: 'applications-db/*'
+        - SSMParameterReadPolicy:
+            ParameterName: 'applications-db'
     Metadata:
       DockerTag: nodejs14.x-v1
       DockerContext: ./

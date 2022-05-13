@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "meli-full-sales"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-fd3rtu1cq4jn"
+s3_prefix = "meli-full-sales"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["MeliFullSalesFunction=869579352973.dkr.ecr.us-east-1.amazonaws.com/melifullsales03c9d037/melifullsalesfunction90828496repo"]
