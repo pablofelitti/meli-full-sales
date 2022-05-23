@@ -1,13 +1,15 @@
 'use strict'
 
 const meliDao = require('../dao/meli-dao');
-const notifier = require('../notifications/notifier');
 const dateUtils = require('../utils/date-utils')
+const AWS = require('aws-sdk')
+const sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
-function updateNotifiedPublications(publicationsToUpdate, currentDatetime, client) {
-    return meliDao.updateNotifiedPublications(publicationsToUpdate.map(it => {
+async function updateNotifiedPublications(publicationsToUpdate, currentDatetime, client) {
+    let publications = publicationsToUpdate.map(it => {
         return {'id': it.id, 'notified_date': currentDatetime}
-    }), client);
+    });
+    return meliDao.updateNotifiedPublications(publications, client);
 }
 
 function unifyId(id) {
@@ -19,101 +21,78 @@ const retrieveCheapFullProducts = async function () {
 
     const client = await meliDao.getConnection()
 
-    return new Promise(function (resolve, reject) {
-        let categories = meliDao.getCategories()
+    let categories = await meliDao.getCategories()
 
-        return categories.then(categories => {
-            console.log(categories.length + ' categories retrieved');
+    console.log(categories.length + ' categories retrieved');
 
-            let allCategoriesPublicationPromises = categories.map(category => {
-                return meliDao.getPublicationsWithFilters(category, client);
-            });
+    let allCategoriesPublicationPromises = categories.map(category => {
+        return meliDao.getPublicationsWithFilters(category, client);
+    });
 
-            let blacklistPromise = meliDao.loadBlacklist(client)
+    let blacklist = await meliDao.loadBlacklist(client)
 
-            let publicationsPromise = Promise.all(allCategoriesPublicationPromises).then(it => {
-                let publications = it.reduce((prev, curr) => curr.concat(prev));
+    let publications = await Promise.all(allCategoriesPublicationPromises)
+    publications = publications.reduce((prev, curr) => curr.concat(prev));
 
-                console.log('Received these publications from Mercado Libre:')
-                console.log(JSON.stringify(publications.map(it => unifyId(it.id))))
+    console.log('Received these publications from Mercado Libre:')
+    console.log(JSON.stringify(publications.map(it => unifyId(it.id))))
 
-                return blacklistPromise.then(blacklist => {
+    console.log('Blacklisted items found:')
+    console.log(JSON.stringify(publications.map(it => unifyId(it.id)).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId))))
 
-                    console.log('Blacklisted items found:')
-                    console.log(JSON.stringify(publications.map(it => unifyId(it.id)).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId))))
+    publications = publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(unifyId(publication.id)))
 
-                    return publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(unifyId(publication.id)))
-                })
-            })
+    let alreadyNotifiedPublications = await meliDao.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)), client)
 
-            return publicationsPromise.then(publications => {
-
-                return meliDao.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)), client)
-                    .then(alreadyNotifiedPublications => {
-
-                        let publicationsToUpdate = []
-                        let currentDatetime = dateUtils.currentDate();
-                        const alreadyNotifiedPublicationsIds = alreadyNotifiedPublications
-                            .filter(it => {
-                                let Difference_In_Time = Math.abs(new Date(it.notified_date).getTime() - currentDatetime.getTime())
-                                let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24)
-                                if (Difference_In_Days >= 10) {
-                                    publicationsToUpdate.push(it)
-                                    return false
-                                }
-                                return true
-                            })
-                            .map(it => it.id)
-
-                        console.log('Publications already sent:');
-                        console.log(JSON.stringify(alreadyNotifiedPublicationsIds));
-
-                        let publicationsReadyToNotify = publications
-                            .filter(it => !alreadyNotifiedPublicationsIds.includes(unifyId(it.id)))
-
-                        publicationsReadyToNotify = unique(publicationsReadyToNotify)
-
-                        if (publicationsReadyToNotify.length !== 0) {
-
-                            console.log('Publications ready to be notified:');
-                            console.log(publicationsReadyToNotify.map(it => unifyId(it.id)));
-
-                            publicationsReadyToNotify.forEach(it => {
-                                notifier.notify(createNotificationMessage(it));
-                            });
-
-                            publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(unifyId(it.id)))
-
-                            if (publicationsReadyToNotify.length > 0) {
-                                let newPublicationsNotified = meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]), client)
-                                    .then(() => {
-                                        resolve()
-                                    });
-
-                                if (publicationsToUpdate.length === 0) {
-                                    return newPublicationsNotified.then(() => resolve())
-                                } else {
-                                    let oldPublicationsUpdated = updateNotifiedPublications(publicationsToUpdate, currentDatetime, client)
-                                    return Promise.all([newPublicationsNotified, oldPublicationsUpdated]).then(() => resolve())
-                                }
-                            } else {
-                                return updateNotifiedPublications(publicationsToUpdate, currentDatetime).then(() => resolve())
-                            }
-                        } else {
-                            console.log('No new publications to notify');
-                            resolve()
-                        }
-                    })
-                    .catch(e => {
-                        console.error(e)
-                        reject()
-                    });
-            });
-        }).catch(e => {
-            console.error("Error loading MELI categories")
-            console.error(e)
+    let publicationsToUpdate = []
+    let currentDatetime = dateUtils.currentDate();
+    let alreadyNotifiedPublicationResults = alreadyNotifiedPublications[0]
+        .filter(it => {
+            let Difference_In_Time = Math.abs(new Date(it.notified_date).getTime() - currentDatetime.getTime())
+            let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24)
+            if (Difference_In_Days >= 10) {
+                publicationsToUpdate.push(it)
+                return false
+            }
+            return true
         })
-    })
+    const alreadyNotifiedPublicationsIds = alreadyNotifiedPublicationResults
+        .map(it => it.id)
+
+    console.log('Publications already sent:')
+    console.log(JSON.stringify(alreadyNotifiedPublicationsIds))
+
+    let publicationsReadyToNotify = publications
+        .filter(it => !alreadyNotifiedPublicationsIds.includes(unifyId(it.id)))
+
+    publicationsReadyToNotify = unique(publicationsReadyToNotify)
+
+    if (publicationsReadyToNotify.length !== 0) {
+
+        console.log('Publications ready to be notified:');
+        console.log(publicationsReadyToNotify.map(it => unifyId(it.id)));
+
+        for (let pub of publicationsReadyToNotify) {
+            await sendQueue(createNotificationMessage(pub))
+        }
+
+        publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(unifyId(it.id)))
+
+        if (publicationsReadyToNotify.length > 0) {
+            let newPublicationsNotified = await meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]), client)
+
+            if (publicationsToUpdate.length === 0) {
+                return newPublicationsNotified
+            } else {
+                let oldPublicationsUpdated = await updateNotifiedPublications(publicationsToUpdate, currentDatetime, client)
+                return [newPublicationsNotified, oldPublicationsUpdated]
+            }
+        } else {
+            return await updateNotifiedPublications(publicationsToUpdate, currentDatetime, client)
+        }
+    } else {
+        console.log('No new publications to notify');
+    }
 }
 
 function unique(itemWithDuplicates) {
@@ -128,6 +107,28 @@ function unique(itemWithDuplicates) {
 
 const createNotificationMessage = function (publication) {
     return "Producto FULL con envío gratis!\n\nDescripción: " + publication.title + "\n\nPrecio: " + publication.price + "\n\nLink: " + publication.permalink;
+}
+
+async function sendQueue(data) {
+
+    let sqsOrderData = {
+        MessageAttributes: {
+            "EnvironmentId": {
+                DataType: "String",
+                StringValue: "dev"
+            },
+            "Channel": {
+                DataType: "String",
+                StringValue: "ofertas"
+            }
+        },
+        MessageBody: data,
+        QueueUrl: "https://sqs.us-east-1.amazonaws.com/869579352973/telegram-sender-TelegramMessageQueue-KYD24H0d3j9e"
+    }
+
+    console.log('sending message')
+    await sqs.sendMessage(sqsOrderData).promise();
+    console.log('message sent')
 }
 
 exports.retrieveCheapFullProducts = retrieveCheapFullProducts

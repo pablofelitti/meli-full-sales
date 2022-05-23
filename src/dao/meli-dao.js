@@ -15,7 +15,7 @@ const getPublicationsWithFilters = function (category, client) {
     return meliRestDao.getPublicationsWithFilters(category, client);
 }
 
-const saveNotifiedPublication = async function (publications, client) {
+const saveNotifiedPublication = function (publications, client) {
     return meliDaoDb.saveNotifiedPublication(publications, client);
 }
 
@@ -27,7 +27,7 @@ const loadBlacklist = function (client) {
     return meliDaoDb.loadBlacklist(client)
 };
 
-const updateNotifiedPublications = function (publicationsToUpdate, client) {
+const updateNotifiedPublications = async function (publicationsToUpdate, client) {
     return meliDaoDb.updateNotifiedPublications(publicationsToUpdate, client)
 }
 

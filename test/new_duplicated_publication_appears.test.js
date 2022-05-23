@@ -5,12 +5,16 @@ describe("New duplicated publications appear", function () {
             resolve()
         })
     })
+    let mockSendQueue = jest.fn(() => {
+        return new Promise(function (resolve, reject) {
+            resolve()
+        })
+    })
     let mockUpdateNotifiedPublication = jest.fn(() => {
         return new Promise(function (resolve, reject) {
             resolve()
         })
     })
-    let mockNotify = jest.fn()
 
     jest.mock('../src/utils/date-utils', () => {
         return {
@@ -23,6 +27,11 @@ describe("New duplicated publications appear", function () {
 
     jest.mock('../src/dao/meli-dao', () => {
         return {
+            getConnection: function() {
+                return new Promise(function (resolve, reject) {
+                    resolve([])
+                })
+            },
             loadBlacklist: function () {
                 return new Promise(function (resolve, reject) {
                     resolve([])
@@ -30,7 +39,7 @@ describe("New duplicated publications appear", function () {
             },
             loadAlreadyNotifiedPublications: function () {
                 return new Promise(function (resolve, reject) {
-                    resolve([])
+                    resolve([[]])
                 })
             },
             saveNotifiedPublication: mockSaveNotifiedPublication,
@@ -61,29 +70,26 @@ describe("New duplicated publications appear", function () {
                         }])
                     })
                 }
-            }
+            },
+            sendQueue: mockSendQueue
         }
     })
-
-    jest.mock('../src/notifications/notifier', () => ({
-        notify: mockNotify
-    }))
 
     let service = require('../src/service/meli-service')
 
     afterEach(() => {
-        mockNotify.mockReset()
+        mockSendQueue.mockReset()
     })
 
     beforeEach(() => {
-        mockNotify.mockReset()
+        mockSendQueue.mockReset()
     })
 
     it("Notify new publication and save it only once", async function () {
 
         await service.retrieveCheapFullProducts()
 
-        expect(mockNotify).toHaveBeenCalled()
+        expect(mockSendQueue).toHaveBeenCalled()
         expect(mockSaveNotifiedPublication).toHaveBeenCalledWith([
             [
                 749158328,

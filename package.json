@@ -5,8 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "test": "jest",
-    "start": "node src/app.js",
-    "meli": "node src/meli_local.js"
+    "local": "node -e \"require('./src/app').lambdaHandler({})\""
   },
   "author": "",
   "license": "ISC",
@@ -14,10 +13,11 @@
     "cron": "^1.8.2",
     "express": "^4.17.1",
     "https": "^1.0.0",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "telebot": "^1.4.1"
   },
   "devDependencies": {
+    "aws-sdk": "^2.1136.0",
     "jest": "^27.0.6"
   }
 }

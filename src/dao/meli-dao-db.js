@@ -1,8 +1,9 @@
 'use strict'
 
 const AWS = require('aws-sdk')
+AWS.config.update({region: 'us-east-1'});
 const ssm = new AWS.SSM()
-const mysql = require('mysql')
+const mysql = require('mysql2/promise')
 
 const getParameters = async function () {
     const query = {Path: "/applications-db"}
@@ -35,14 +36,12 @@ const getConnection = async function getConnection() {
 const saveNotifiedPublication = async function (publications, client) {
 
     try {
-        await client.query('BEGIN')
-        await client.query('insert into notified_publications (id, title, price, notified_date) values ?', [publications], function (error) {
-            if (error) throw error;
-            client.end();
-        })
-        await client.query('COMMIT')
+        await client.beginTransaction()
+        let sql = 'insert into notified_publications (id, title, price, notified_date) values ?';
+        await client.query(sql, [publications])
+        await client.commit()
     } catch (e) {
-        await client.query('ROLLBACK')
+        await client.rollback()
         throw e
     }
 }
@@ -51,33 +50,21 @@ const updateNotifiedPublications = async function updateNotifiedPublications(pub
     let ids = publicationsToUpdate.map(it => it.id)
     let notifiedDate = publicationsToUpdate[0].notified_date
     try {
-        await client.query('BEGIN')
-        await client.query('update notified_publications set notified_date=? where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate], function (error) {
-            if (error) throw error;
-        })
-        await client.query('COMMIT')
+        await client.beginTransaction()
+        await client.query('update notified_publications set notified_date=? where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate])
+        await client.commit()
     } catch (e) {
-        await client.query('ROLLBACK')
+        await client.rollback()
         throw e
     }
 }
 
 const loadAlreadyNotifiedPublications = function (publicationIds, client) {
-    return new Promise(resolve => {
-        client.query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')', function (error, results, fields) {
-            if (error) throw error;
-            return resolve(results);
-        })
-    })
+    return client.query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')')
 }
 
 const loadBlacklist = function (client) {
-    return new Promise(resolve => {
-        client.query('SELECT id, title from blacklist bl', function (error, results, fields) {
-            if (error) throw error;
-            return resolve(results);
-        })
-    })
+    return client.query('SELECT id, title from blacklist bl')
 }
 
 exports.saveNotifiedPublication = saveNotifiedPublication

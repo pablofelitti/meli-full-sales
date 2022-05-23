@@ -4,7 +4,7 @@ Description: meli full sales lambda
 
 Globals:
   Function:
-    Timeout: 5
+    Timeout: 7
 
 Resources:
   MeliFullSalesFunction:
@@ -15,11 +15,12 @@ Resources:
         - x86_64
       Policies:
         - SSMParameterReadPolicy:
-            ParameterName: 'telegram-ids/*'
-        - SSMParameterReadPolicy:
-            ParameterName: 'applications-db/*'
-        - SSMParameterReadPolicy:
             ParameterName: 'applications-db'
+        - SQSSendMessagePolicy:
+            QueueName: !ImportValue TelegramMessageQueueName
+      Environment:
+        Variables:
+          SQS_QUEUE_URL: !ImportValue TelegramMessageQueueUrl
     Metadata:
       DockerTag: nodejs14.x-v1
       DockerContext: ./
