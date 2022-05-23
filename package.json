@@ -4,20 +4,15 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "test": "jest",
     "local": "node -e \"require('./src/app').lambdaHandler({})\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cron": "^1.8.2",
-    "express": "^4.17.1",
     "https": "^1.0.0",
-    "mysql2": "^2.3.3",
-    "telebot": "^1.4.1"
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
-    "aws-sdk": "^2.1136.0",
-    "jest": "^27.0.6"
+    "aws-sdk": "^2.1136.0"
   }
 }

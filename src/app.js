@@ -1,5 +1,5 @@
-const meli = require("./jobs/meli")
+const meliService = require('./meli-service');
 
 exports.lambdaHandler = async (event, context) => {
-    await meli.retrieveCheapFullProducts()
+    await meliService.retrieveCheapFullProducts()
 }

@@ -1,15 +1,17 @@
 'use strict'
 
-const meliDao = require('../dao/meli-dao');
-const dateUtils = require('../utils/date-utils')
+const meliDaoDb = require('./meli-dao-db');
+const meliDaoRest = require('./meli-dao-rest');
+const dateUtils = require('./date-utils')
 const AWS = require('aws-sdk')
+AWS.config.update({region: 'us-east-1'})
 const sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
 async function updateNotifiedPublications(publicationsToUpdate, currentDatetime, client) {
     let publications = publicationsToUpdate.map(it => {
         return {'id': it.id, 'notified_date': currentDatetime}
     });
-    return meliDao.updateNotifiedPublications(publications, client);
+    return meliDaoDb.updateNotifiedPublications(publications, client);
 }
 
 function unifyId(id) {
@@ -19,17 +21,17 @@ function unifyId(id) {
 
 const retrieveCheapFullProducts = async function () {
 
-    const client = await meliDao.getConnection()
+    const client = await meliDaoDb.getConnection()
 
-    let categories = await meliDao.getCategories()
+    let categories = await meliDaoRest.getCategories()
 
     console.log(categories.length + ' categories retrieved');
 
     let allCategoriesPublicationPromises = categories.map(category => {
-        return meliDao.getPublicationsWithFilters(category, client);
+        return meliDaoRest.getPublicationsWithFilters(category, client);
     });
 
-    let blacklist = await meliDao.loadBlacklist(client)
+    let blacklist = await meliDaoDb.loadBlacklist(client)
 
     let publications = await Promise.all(allCategoriesPublicationPromises)
     publications = publications.reduce((prev, curr) => curr.concat(prev));
@@ -42,7 +44,7 @@ const retrieveCheapFullProducts = async function () {
 
     publications = publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(unifyId(publication.id)))
 
-    let alreadyNotifiedPublications = await meliDao.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)), client)
+    let alreadyNotifiedPublications = await meliDaoDb.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)), client)
 
     let publicationsToUpdate = []
     let currentDatetime = dateUtils.currentDate();
@@ -79,7 +81,7 @@ const retrieveCheapFullProducts = async function () {
         publicationsReadyToNotify = publicationsReadyToNotify.filter(it => !publicationsToUpdate.map(it2 => it2.id).includes(unifyId(it.id)))
 
         if (publicationsReadyToNotify.length > 0) {
-            let newPublicationsNotified = await meliDao.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]), client)
+            let newPublicationsNotified = await meliDaoDb.saveNotifiedPublication(publicationsReadyToNotify.map(it => [unifyId(it.id), it.title, it.price, currentDatetime]), client)
 
             if (publicationsToUpdate.length === 0) {
                 return newPublicationsNotified
@@ -115,7 +117,7 @@ async function sendQueue(data) {
         MessageAttributes: {
             "EnvironmentId": {
                 DataType: "String",
-                StringValue: "dev"
+                StringValue: "dev" //TODO change to proper environment
             },
             "Channel": {
                 DataType: "String",
@@ -123,7 +125,7 @@ async function sendQueue(data) {
             }
         },
         MessageBody: data,
-        QueueUrl: "https://sqs.us-east-1.amazonaws.com/869579352973/telegram-sender-TelegramMessageQueue-KYD24H0d3j9e"
+        QueueUrl: process.env.SQS_QUEUE_URL
     }
 
     console.log('sending message')
