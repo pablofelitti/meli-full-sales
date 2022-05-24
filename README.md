@@ -1,6 +1,6 @@
 # meli-full-sales
 
-Lambda that checks for publications in mercado libre argentina with possible error en prices
+Lambda that checks for publications in mercado libre argentina with possible error in prices
 
 ## Installation
 
@@ -17,8 +17,6 @@ Lambda that checks for publications in mercado libre argentina with possible err
 `sam local invoke`
 
 ## Deployment
-
-Need to run 
 
 `sam build`
 
