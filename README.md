@@ -1,39 +1,32 @@
 # meli-full-sales
 
+Lambda that checks for publications in mercado libre argentina with possible error en prices
+
 ## Installation
 
-Just `npm install`
+### To run locally with nodejs
 
-## Tasks
+`npm install`
 
-| Name                           | Description                                             |
-|--------------------------------|---------------------------------------------------------|
-| `npm run start:local`          | run with notifications and db mocked                    |
-| `npm run start:deploy`         | run with notifications and db (see tokens to set)       |
-| `npm run meli`                 | run meli only with notifications and db mocked          |
+`npm run start:local`
 
-## Environment variables
+### To build and run the lambda locally:
 
-```bash
-#Telegram configuration
-export TELEGRAM_BOT_TOKEN=<telegram_bot_access_key>
-export TELEGRAM_CHANNEL=<telegram_channel>
+`sam build`
 
-#Database configuration
-export PGHOST=<postgre_host>
-export PGDATABASE=<postgre_database>
-export PGPASSWORD=<postgre_password>
-export PGUSER= <postgre_user>
-```
+`sam local invoke`
 
 ## Deployment
 
-When pushed, AWS CodePipeline builds Dockerfile and deploys to AWS Beanstalk 
+Need to run 
+
+`sam build`
+
+`sam deploy`
 
 ## TODO list
 
-- [ ] Mock in a better way
-- [ ] Remove secrets from Beanstalk env variables
-- [ ] Refactor this app to send notifications in async way (SQS + Lambda)
+- [ ] Speed up Lambda cold start by initializing stuff outside handler
+- [ ] Reduce application logic by enhancing queries
 - [ ] Enable endpoint to blacklist items
 - [ ] Enable UI to get all the information in the database and be able to modify it
