@@ -21,6 +21,15 @@ Resources:
       Environment:
         Variables:
           SQS_QUEUE_URL: !ImportValue TelegramMessageQueueUrl
+          ENVIRONMENT: prod
+      Events:
+        MeliFullSalesSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: 'rate(1 minute)'
+            Name: MeliFullSalesSchedule
+            Description: Meli full sales schedule
+            Enabled: true
     Metadata:
       DockerTag: nodejs14.x-v1
       DockerContext: ./

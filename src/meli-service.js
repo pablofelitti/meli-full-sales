@@ -117,7 +117,7 @@ async function sendQueue(data) {
         MessageAttributes: {
             "EnvironmentId": {
                 DataType: "String",
-                StringValue: "dev" //TODO change to proper environment
+                StringValue: process.env.ENVIRONMENT
             },
             "Channel": {
                 DataType: "String",
