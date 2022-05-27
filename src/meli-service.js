@@ -31,7 +31,7 @@ const retrieveCheapFullProducts = async function () {
             return meliDaoRest.getPublicationsWithFilters(category, client);
         });
 
-        let blacklist = await meliDaoDb.loadBlacklist(client)
+        let blacklist = (await meliDaoDb.loadBlacklist(client))[0]
 
         let publications = await Promise.all(allCategoriesPublicationPromises)
         publications = publications.reduce((prev, curr) => curr.concat(prev));
