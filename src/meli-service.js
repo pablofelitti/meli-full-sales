@@ -133,6 +133,7 @@ async function sendQueue(data) {
     }
 
     console.log('sending message')
+    //TODO this could be enhaced in the future to batch messages
     await sqs.sendMessage(sqsOrderData).promise();
     console.log('message sent')
 }

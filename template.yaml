@@ -4,7 +4,7 @@ Description: meli full sales lambda
 
 Globals:
   Function:
-    Timeout: 7
+    Timeout: 20
 
 Resources:
   MeliFullSalesFunction:
