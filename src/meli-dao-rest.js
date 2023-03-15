@@ -1,7 +1,7 @@
 'use strict'
 
 const https = require('https');
-const priceLimit = 1800
+const priceLimit = 2700
 
 const getCategories = function () {
 
