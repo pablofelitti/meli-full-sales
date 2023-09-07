@@ -8,7 +8,7 @@ Lambda that checks for publications in mercado libre argentina with possible err
 
 `npm install`
 
-`npm run start:local`
+`npm run local`
 
 ### To build and run the lambda locally:
 
