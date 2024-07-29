@@ -38,9 +38,10 @@ const retrieveCheapFullProducts = async function () {
     console.log(JSON.stringify(publications.map(it => unifyId(it.id))))
 
     console.log('Blacklisted items found:')
-    console.log(JSON.stringify(publications.map(it => unifyId(it.id)).filter(publicationId => blacklist.map(blacklistItem => blacklistItem.id).includes(publicationId))))
+    let blacklistIds = blacklist.map(blacklistItem => unifyId(blacklistItem.id));
+    console.log(JSON.stringify(publications.map(it => unifyId(it.id)).filter(publicationId => blacklistIds.includes(publicationId))))
 
-    publications = publications.filter(publication => !blacklist.map(blacklistItem => blacklistItem.id).includes(unifyId(publication.id)))
+    publications = publications.filter(publication => !blacklistIds.includes(unifyId(publication.id)))
 
     let alreadyNotifiedPublications = await meliDaoDb.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)))
 
