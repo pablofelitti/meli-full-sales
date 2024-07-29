@@ -14,8 +14,12 @@ Resources:
       Architectures:
         - x86_64
       Policies:
-        - SSMParameterReadPolicy:
-            ParameterName: 'applications-db'
+        - DynamoDBReadPolicy:
+            TableName: !Ref BlacklistTable
+        - DynamoDBWritePolicy:
+            TableName: !Ref NotificationsTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref NotificationsTable
         - SQSSendMessagePolicy:
             QueueName: !ImportValue TelegramMessageQueueName
       Environment:
@@ -34,3 +38,31 @@ Resources:
       DockerTag: nodejs14.x-v1
       DockerContext: ./
       Dockerfile: Dockerfile
+  BlacklistTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: meli_blacklist
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PROVISIONED
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+  NotificationsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: meli_notified_publications
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PROVISIONED
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

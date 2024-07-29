@@ -2,73 +2,133 @@
 
 const AWS = require('aws-sdk')
 AWS.config.update({region: 'us-east-1'});
-const ssm = new AWS.SSM()
-const mysql = require('mysql2/promise')
+const ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
 
-const getParameters = async function () {
-    const query = {Path: "/applications-db"}
-    let ssmResponse = await ssm.getParametersByPath(query).promise();
-    return {
-        HOST: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/host')[0].Value,
-        USER: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/user')[0].Value,
-        PASSWORD: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/password')[0].Value,
-        DATABASE: ssmResponse.Parameters.filter(it => it.Name === '/applications-db/database-meli')[0].Value
-    }
+//TODO remove duplicate
+function unifyId(id) {
+    let noPrefixId = id.replace('MLA', '');
+    return parseInt(noPrefixId);
 }
 
-const getConnection = async function getConnection() {
+const saveNotifiedPublication = async function (publications, t) {
 
-    const parameters = await getParameters()
+    let params = {
+        RequestItems: {
+            meli_notified_publications: [],
+        },
+    };
 
-    const clientOptions = {
-        host: parameters.HOST,
-        user: parameters.USER,
-        password: parameters.PASSWORD,
-        database: parameters.DATABASE,
-        ssl: {
-            rejectUnauthorized: false
+    publications.forEach(it => {
+        params.RequestItems.meli_notified_publications.push({
+            PutRequest: {
+                Item: {
+                    id: {N: unifyId(it.id).toString()},
+                    title: {S: it.title},
+                    price: {S: it.price.toString()},
+                    notified_date: {S: t.toString()}
+                },
+            },
+        })
+    })
+
+    await ddb.batchWriteItem(params, function (err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log("Success", data);
         }
-    }
+    }).promise();
 
-    return mysql.createConnection(clientOptions)
 }
 
-const saveNotifiedPublication = async function (publications, client) {
-
-    try {
-        await client.beginTransaction()
-        let sql = 'insert into notified_publications (id, title, price, notified_date) values ?';
-        await client.query(sql, [publications])
-        await client.commit()
-    } catch (e) {
-        await client.rollback()
-        throw e
-    }
-}
-
-const updateNotifiedPublications = async function updateNotifiedPublications(publicationsToUpdate, client) {
+const updateNotifiedPublications = async function updateNotifiedPublications(publicationsToUpdate) {
     let ids = publicationsToUpdate.map(it => it.id)
     let notifiedDate = publicationsToUpdate[0].notified_date
-    try {
-        await client.beginTransaction()
-        await client.query('update notified_publications set notified_date=? where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate])
-        await client.commit()
-    } catch (e) {
-        await client.rollback()
-        throw e
+    //await client.query('update notified_publications set notified_date=? where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate])
+
+    for (let i = 0; i < ids.length; i++) {
+        let params = {
+            TableName: "meli_notified_publications",
+            Key: {
+                id: {
+                    'N': ids[i]
+                }
+            },
+            UpdateExpression: "SET notified_date = :nd",
+            ExpressionAttributeValues: {
+                ':nd': {
+                    'S': notifiedDate
+                },
+            }
+        };
+
+        await ddb.updateItem(params, function (err, data) {
+            if (err) {
+                console.log("Error", err);
+            } else {
+                console.log("Success", data);
+            }
+        }).promise();
     }
 }
 
-const loadAlreadyNotifiedPublications = function (publicationIds, client) {
-    return client.query('SELECT id, title, price, notified_date from notified_publications np where np.id in (\'' + publicationIds.join('\', \'') + '\')')
+const loadAlreadyNotifiedPublications = async function (publicationIds) {
+    let params = {
+        RequestItems: {
+            meli_notified_publications: {
+                Keys: [],
+                ProjectionExpression: "id, title, price, notified_date",
+            },
+        },
+    };
+
+    publicationIds.forEach(function (e, i, a) {
+        params.RequestItems.meli_notified_publications.Keys.push({id: {N: e.toString()}})
+    })
+
+    let res = []
+    await ddb.batchGetItem(params, function (err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            data.Responses.meli_notified_publications.forEach(function (element, index, array) {
+                res.push({
+                    id: parseInt(element.id.N),
+                    notified_date: element.notified_date.S
+                });
+            });
+        }
+    }).promise();
+
+    return res;
 }
 
-const loadBlacklist = function (client) {
-    return client.query('SELECT id, title from blacklist bl')
+const loadBlacklist = async function () {
+
+    const params = {
+        ProjectionExpression: "id, title",
+        TableName: "meli_blacklist",
+    };
+
+    let res = []
+    await ddb.scan(params, function (err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log("Success reading blacklist");
+            data.Items.forEach(function (element, index, array) {
+                res.push({
+                    id: element.id.N,
+                    title: element.title.S,
+                })
+            });
+        }
+    }).promise();
+
+    return res
 }
 
 exports.saveNotifiedPublication = saveNotifiedPublication
 exports.loadAlreadyNotifiedPublications = loadAlreadyNotifiedPublications
 exports.loadBlacklist = loadBlacklist
 exports.updateNotifiedPublications = updateNotifiedPublications
-exports.getConnection = getConnection

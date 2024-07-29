@@ -1,7 +1,7 @@
 'use strict'
 
 const https = require('https');
-const priceLimit = 6000
+const priceLimit = 8000
 
 const getCategories = function () {
 
@@ -35,7 +35,7 @@ const getCategories = function () {
     })
 }
 
-const getPublicationsWithFilters = function (category, client) {
+const getPublicationsWithFilters = function (category) {
 
 //TODO query params should be treated as parameters somewhere else
     const options = {
