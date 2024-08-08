@@ -42,7 +42,6 @@ const retrieveCheapFullProducts = async function () {
     console.log(JSON.stringify(publications.map(it => unifyId(it.id)).filter(publicationId => blacklistIds.includes(publicationId))))
 
     publications = publications.filter(publication => !blacklistIds.includes(unifyId(publication.id)))
-
     let alreadyNotifiedPublications = await meliDaoDb.loadAlreadyNotifiedPublications(publications.map(it => unifyId(it.id)))
 
     let publicationsToUpdate = []

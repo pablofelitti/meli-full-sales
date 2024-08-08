@@ -44,20 +44,19 @@ const saveNotifiedPublication = async function (publications, t) {
 const updateNotifiedPublications = async function updateNotifiedPublications(publicationsToUpdate) {
     let ids = publicationsToUpdate.map(it => it.id)
     let notifiedDate = publicationsToUpdate[0].notified_date
-    //await client.query('update notified_publications set notified_date=? where id in (' + '\'' + ids.join('\', \'') + '\'' + ')', [notifiedDate])
 
     for (let i = 0; i < ids.length; i++) {
         let params = {
             TableName: "meli_notified_publications",
             Key: {
                 id: {
-                    'N': ids[i]
+                    'N': ids[i].toString()
                 }
             },
             UpdateExpression: "SET notified_date = :nd",
             ExpressionAttributeValues: {
                 ':nd': {
-                    'S': notifiedDate
+                    'S': notifiedDate.toString()
                 },
             }
         };
@@ -73,6 +72,11 @@ const updateNotifiedPublications = async function updateNotifiedPublications(pub
 }
 
 const loadAlreadyNotifiedPublications = async function (publicationIds) {
+
+    if (publicationIds.length === 0) {
+        return []
+    }
+
     let params = {
         RequestItems: {
             meli_notified_publications: {
